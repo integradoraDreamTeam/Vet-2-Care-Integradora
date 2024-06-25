@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<!-- CONTEXTO PARA EL PROFESOR: Este es un formulario para registrar a tus mascotas en una página que se encarga
+ de llevar un historial médico y agendar citas para tus mascotas.-->
 <html>
     <head>
         <link rel="stylesheet" href="styles/main.css">
@@ -7,9 +9,7 @@
         <div style="display: flex; justify-content: center;">
             <form>
             <h1 style="display: flex; flex-direction: column; text-align: center;">Registra a tu mascota</h1>
-            <hr>
             <input type="text" class="input" placeholder="Nombre de tu mascota">
-            <br>
             <select name="pets" id="pet-select" title="Animal">
                 <option hidden>Animal</option>
                     <option value="Perro">Perro</option>
@@ -20,8 +20,8 @@
                 <option value="1">Macho</option>
                 <option value="2">Hembra</option>
             </select>
-                <p>Fecha de nacimiento</p>
-            <input type="date">
+                <label for="born">Fecha de nacimiento</label>
+            <input type="date" id="born" name="born">
             <div class="card" style="height: 369px;">
                 <h2>Información adicional</h2>
                 <hr>
