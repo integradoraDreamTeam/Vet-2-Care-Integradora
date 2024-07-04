@@ -1,0 +1,7 @@
+.header{
+    display: flex;
+    flex-direction: row;
+    width: 1440px;
+    height: 164px;
+
+}
