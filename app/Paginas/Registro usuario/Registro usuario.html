@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE-edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" src="veterinario.png">
+    <link rel="icon" type="png" href="veterinario.png">
     <link rel="stylesheet" href="Registro usuario.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,18 +31,18 @@
                     <i class='bx bxl-linkedin'><ion-icon name="logo-linkedin"></ion-icon></i>
                 </div>
                 <p>Usa tu email para registrarte</p>
-                <form class="user-form">
+                <form class="user-form" id="userForm">
                     <label>
                         <i class='bx bx-user'><box-icon name='user'></box-icon></i>
-                        <input type="text" placeholder="Nombre completo">
+                        <input type="text" placeholder="Nombre completo" id="name">
                     </label>
                     <label>
                         <i class='bx bx-envelope'><box-icon name='envelope'></box-icon></i>
-                        <input type="text" placeholder="Correo electronico">
+                        <input type="text" placeholder="Correo electronico" id="email">
                     </label>
                     <label>
                         <i class='bx bx-lock-alt'><box-icon name='lock-alt'></box-icon></i>
-                        <input type="password" placeholder="Contraseña">
+                        <input type="password" placeholder="Contraseña" id="pass">
                     </label>
                     <button type="submit" id="register-btn">Registrarse</button>
                 </form>

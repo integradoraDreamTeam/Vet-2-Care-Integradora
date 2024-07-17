@@ -13,7 +13,7 @@ body {
     height: 100vh;
     background-size: cover;
     width: 100%;
-    background-image: linear-gradient(to left, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.5) 50%), url(/images/fo.png);
+    background-image: linear-gradient(to left, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.5) 50%), url(fo.png);
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;

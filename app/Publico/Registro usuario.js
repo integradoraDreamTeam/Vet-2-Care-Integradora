@@ -1,4 +1,4 @@
-document.getElementById('user-form').addEventListener('submit',(e)=>{
+document.getElementById("userForm").addEventListener("submit",(e)=>{
     e.preventDefault();
     console.log(e)
 })
