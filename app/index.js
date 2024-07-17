@@ -13,6 +13,7 @@ server.listen(server.get("port"));
 // Rutas
 server.get("/main",(req,res)=> res.sendFile(_dirname + "/Paginas/Main pre/mainpre.html"))
 server.get("/sUp",(req,res)=> res.sendFile(_dirname + "/Paginas/Registro usuario/Registro usuario.html"))
+server.get("/sIn",(req,res)=> res.sendFile(_dirname + "/Paginas/Log in/Login.html"))
  
 //Configuracion
-server.use(express.static(_dirname+"/Publico"))
+server.use(express.static(_dirname+"/Publico"));

@@ -3,23 +3,23 @@
     margin: 0;
     box-sizing: border-box;
     font-family: "Montserrat", sans-serif;
-    color: #314E23;
 }
 
 body {
     display: flex;
     align-items: center;
     padding-left: 15%;
-    justify-content:left;
+    justify-content: left;
     height: 100vh;
     background-size: cover;
     width: 100%;
-    background-image: linear-gradient(to left, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.5) 50%), url(Image/fo.png);
+    background-image: linear-gradient(to left, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.5) 50%), url(/images/fo.png);
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
 }
-.form-container{
+
+.form-container {
     display: flex;
     border-radius: 20px;
     box-shadow: 0 5px 7px rgba(0,0,0, .1);
@@ -28,86 +28,99 @@ body {
     transition: all 1s ease;
     margin: 10px;
 }
-.info-section{
-    width: 40%;
+
+.info-section {
+    width: 50%;
     display: flex;
     align-items: center;
     text-align: center;
-    background-image: linear-gradient(60deg, #314E23, #7ED957);
+    background-image: linear-gradient(60deg, #E6F4F1, #8DC7BB);
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
 }
-.info-content{
+
+.info-content {
     width: 100%;
     padding: 0 30px;
 }
-.info-content h2{
+
+.info-content h2 {
     font-size: 2.5rem;
     color: #333;
 }
-.info-content p{
+
+.info-content p {
     margin: 15px 0;
     color: #555;
 }
-.info-content input{
+
+.info-content input {
     background-color: transparent;
     outline: none;
-    border: solid 2px #f8fff8;
+    border: solid 2px #9191bd;
     border-radius: 20px;
     padding: 10px 20px;
-    color: #f8fff8;
+    color: #9191bd;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-.info-content input:hover{
-    background-color: #004E71;
+
+.info-content input:hover {
+    background-color: #9191bd;
     border: none;
-    color:#f8fff8;
+    color: white;
     box-shadow: 0 2px 5px rgba(0,0,0, .1);
 }
 
-.form-section{
+.form-section {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 60%;
     text-align: center;
-    background-color: #f8fff8;
+    background-color: #f8f8f8;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
 }
-.form-content{
+
+.form-content {
     padding: 0 30px;
 }
-.form-content h2{
-    color:#333;
+
+.form-content h2 {
+    color: #333;
     font-size: 2rem;
 }
-.form-content p{
-    color:#555;
+
+.form-content p {
+    color: #555;
 }
-.social-icons{
+
+.social-icons {
     margin: 15px 0;
 }
-.social-icons i{
+
+.social-icons i {
     border-radius: 50%;
     padding: 15px;
     cursor: pointer;
     margin: 0 10px;
-    color:#004E71;
-    border: solid thin #004E71;
+    color: #9191bd;
+    border: solid thin #9191bd;
     transition: background-color 0.3s ease;
     box-shadow: 0 2px 5px rgba(0,0,0, .1);
 }
 
-.social-icons i:hover{
+.social-icons i:hover {
     background-color: #c7c7f3;
     color: #fff;
 }
-.user-form{
+
+.user-form {
     margin: 30px 0 0 0;
 }
-.user-form label{
+
+.user-form label {
     display: flex;
     align-items: center;
     margin-bottom: 15px;
@@ -117,31 +130,38 @@ body {
     box-shadow: 0 2px 5px rgba(0,0,0, .1);
 }
 
-.user-form label input{
+.user-form label input {
     width: 100%;
-    padding: 10px; 
+    padding: 10px;
     background-color: #fff;
     border: none;
     outline: none;
     border-radius: 20px;
-    color:#333;
+    color: #333;
 }
 
-.user-form label i{
+.user-form label i {
     color: #a7a7a7;
 }
 
-.user-form input[type="submit"] {
-    background-color: #004E71;
+.user-form input[type="submit"],
+.user-form input[type="button"] {
+    background-color: #9191bd;
     color: #fff;
     border-radius: 20px;
-    border:none;
+    border: none;
     padding: 10px 15px;
     cursor: pointer;
     margin-top: 10px;
     box-shadow: 0 2px 5px rgba(0,0,0, .1);
 }
 
-.user-form input[type="submit"]:hover{
-    background-color: #004E71;
+.user-form input[type="submit"]:hover,
+.user-form input[type="button"]:hover {
+    background-color: #7a7a9a;
+}
+
+.hide {
+    position: absolute;
+    transform: translateY(-300%);
 }
