@@ -1,6 +1,17 @@
-document.getElementById("userForm").addEventListener("submit",(e)=>{
+document.getElementById("userForm").addEventListener("submit", async (e)=>{
     e.preventDefault();
-    console.log(e)
+    //console.log(e)
+    const res=await fetch("http://localhost:4500/api/registrer",{
+        method:"POST",
+        headers:{
+            "Content-Type" : "application/json"
+        },
+        body: JSON.stringify({
+            name: e.target.children.namelab.children.name.value,
+            email: e.target.children.emailab.children.email.value,
+            password: e.target.children.passlab.children.pass.value,
+        })
+    })
 })
 
 //const btnSignIn = document.getElementById("sign-in"),
