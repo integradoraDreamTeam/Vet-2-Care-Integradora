@@ -25,8 +25,8 @@ server.set('Paginas', path.join(_dirname, 'Paginas'));
 import  db from "mysql2";
 const conn=db.createConnection({
 host: "localhost",
-user: "root",          // Remplazar con tu nombre de usuario
-password: "juanito1",  // Remplazar con tu contraseña
+user: "",          // Remplazar con tu nombre de usuario
+password: "",  // Remplazar con tu contraseña
 database: "Vet2care",
 port: 3306,
 });
