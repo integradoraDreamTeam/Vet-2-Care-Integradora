@@ -6,8 +6,9 @@ const _dirname = path.dirname(fileURLToPath(import.meta.url));
 import express from 'express';
 import {methods as authentication} from './controllers/authentication.controller.js';
 // j
-const cors =require("cors")
-const bodyParser= require("body-parser");
+import  cors from "cors";
+import bodyParser from "body-parser";
+
 
 //Crear el servidor
 const server=express();
@@ -15,17 +16,17 @@ server.set("port",4500);
 server.listen(server.get("port"));
 
  // Mensaje comprobacion  fucionamiento del server
-server.listen(4500, () => {
+server.listen(3000, () => {
     console.log("Esta madre funciona HAAAA");})
 
-
+server.set('Paginas', path.join(_dirname, 'Paginas'));
 
 // Coneccion con la base de datos
-const db= require("mysql2");
+import  db from "mysql2";
 const conn=db.createConnection({
 host: "localhost",
-user: "",          // Remplazar con tu nombre de usuario
-password: "",  // Remplazar con tu contraseña
+user: "root",          // Remplazar con tu nombre de usuario
+password: "juanito1",  // Remplazar con tu contraseña
 database: "Vet2care",
 port: 3306,
 });
@@ -39,7 +40,10 @@ conn.connect((err)=> {
 }});
 
 
-
+// Para que pueda leer datos del lso formulariso 
+server.use(bodyParser.urlencoded({extended: false}))
+server.use(bodyParser.json());
+server.use(cors());
 
 
 
@@ -49,7 +53,7 @@ server.get("/sUp",(req,res)=> res.sendFile(_dirname + "/Paginas/Registro usuario
 server.get("/sIn",(req,res)=> res.sendFile(_dirname + "/Paginas/Log in/Login.html"))
 server.get("/sMa",(req,res)=> res.sendFile(_dirname + "/Paginas/Registro mascota/Registro mascota.html"))
 server.get("/store",(req,res)=> res.sendFile(_dirname + "/Paginas/Tienda/Tienda main/Tienda.html"))
-server.get("/registromascotas",(req,res)=> res.sendFile(_dirname + "\Paginas\Registro mascota\Registro mascota.html"))
+server.get("/registromascotas",(req,res)=> res.sendFile(_dirname + "/Paginas/Registro mascota/Registro mascota.html"))
 server.post("/api/login",authentication.login)
 server.post("/api/registrer",authentication.registrer)
  
@@ -96,12 +100,14 @@ server.post("/postmascota", (req, res) => {
 
 //Configuracion
 server.use(express.static(_dirname+"/Publico"));
+
 server.use(express.static(_dirname+'/images'))
 server.use(express.json());
 // j
 server.use(bodyParser.urlencoded({extended: false}))
 server.use(bodyParser.json());
 server.use(cors());
+
 
 
 

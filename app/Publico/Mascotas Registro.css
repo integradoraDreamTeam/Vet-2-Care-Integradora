@@ -64,7 +64,7 @@ p{
   font-size: x-large;
 }
 body{
-  background-image: url(/app/images/Fondo_RMascotas.jpg);
+  background-image: url(Fondo_RMascotas.jpg);
   background-position: center;
   background-size: cover;
   display: flex;
