@@ -1,3 +1,8 @@
+//Crear el servidor
+const server=express();
+server.set("port",4500);
+server.listen(server.get("port"));
+
 //Meter el dirmane
 import path from 'path';
 import {fileURLToPath} from 'url';
@@ -6,10 +11,10 @@ const _dirname = path.dirname(fileURLToPath(import.meta.url));
 import express from 'express';
 import {methods as authentication} from './controllers/authentication.controller.js';
 
-//Crear el servidor
-const server=express();
-server.set("port",4500);
-server.listen(server.get("port"));
+//Configuracion
+server.use(express.static(_dirname+"/Publico"));
+server.use(express.static(_dirname+'/images'))
+server.use(express.json());
 
 // Rutas
 server.get("/",(req,res)=> res.sendFile(_dirname + "/Paginas/Main pre/mainpre.html"))
@@ -20,7 +25,3 @@ server.get("/store",(req,res)=> res.sendFile(_dirname + "/Paginas/Tienda/Tienda 
 server.post("/api/login",authentication.login)
 server.post("/api/registrer",authentication.registrer)
  
-//Configuracion
-server.use(express.static(_dirname+"/Publico"));
-server.use(express.static(_dirname+'/images'))
-server.use(express.json());

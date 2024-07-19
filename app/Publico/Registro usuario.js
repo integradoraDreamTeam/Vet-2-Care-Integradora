@@ -11,7 +11,12 @@ document.getElementById("userForm").addEventListener("submit", async (e)=>{
             email: e.target.children.emailab.children.email.value,
             password: e.target.children.passlab.children.pass.value,
         })
-    })
+    });
+    if(!res.ok) return;
+    const resJson= await res.json();
+    if(resJson.redirect){
+        window.location.href=resJson.redirect;
+    }
 })
 
 //const btnSignIn = document.getElementById("sign-in"),
