@@ -1,42 +1,86 @@
 <!DOCTYPE html>
 <!-- CONTEXTO PARA EL PROFESOR: Este es un formulario para registrar a tus mascotas en una página que se encarga
  de llevar un historial médico y agendar citas para tus mascotas.-->
-<html>
+ <html>
     <head>
-        <title>Registra a tu mascota</title>
-        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="Mascotas Registro.css" type="text/css">
+        
     </head>
-    <body bgcolor="#e8e8e8">
-        <div style="display: flex; justify-content: center;">
-            <form>
-            <h1 style="display: flex; flex-direction: column; text-align: center;">Registra a tu mascota</h1>
-            <input type="text" class="input" placeholder="Nombre de tu mascota">
-            <select name="pets" id="pet-select" title="Animal">
-                <option hidden>Animal</option>
-                    <option value="Perro">Perro</option>
-                    <option value="Gato">Gato</option>
-            </select>
-            <select name="Sexo" id="sex" >
-                <option value="" hidden>Selecciona el sexo</option>
-                <option value="1">Macho</option>
-                <option value="2">Hembra</option>
-            </select>
-                <label for="born">Fecha de nacimiento</label>
-            <input type="date" id="born" name="born">
-            <div class="card" style="height: 369px;">
-                <h2>Información adicional</h2>
-                <hr>
-                <div style="display:flex; flex-direction: column; align-items: center;">
-                    <textarea name="Descripcion" id="des" cols="40" rows="10" 
-                    placeholder="Ejemplo: Alergias, discapacidades, actitudes, etc..." style="margin:10px;"></textarea>
-                </div>
-            </div>
-            <button>Guardar</button>
-            </form>
+    <body>
+         
+        <form action="/postmascota" method="post">
+            
+            <p class="titulo">Registra a tu mascota</p>
+            <hr>
+            <div class="juntos">
+            <input type="text" name="NombreA" id="NombreA" class="input" placeholder="Nombre de tu mascota">
+        
         </div>
+
+        <label>
+            <p class="subt">Especie del animal</p>
+        <select name="EspecieA" class="input" id="EspecieA" title="Especie del animal">
+            <option hidden>--Especia del animal--</option>
+     <option value="perro">Perro</option>
+         <option value="gato">Gato</option>
+    <option value="hamster">Hamster</option>
+     <option value="perico">Perico</option>
+     <option value="araña">Araña</option>
+     <option value="pez">Pez</option>
+    </select>
+
+        </label>
+
+        <label  for="RazaA">
+            <p class="subt">Raza del animal</p>
+            <select name="RazaA" class="input" id="RazaA" title="Raza del animal">
+                <option hidden>--Razas de animales--</option>
+                
+        </select>
+        </label>
+
+        <label for="EdadA">
+            <p class="subt" >Edad de tu mascota</p>
+        <input type="number" name="EdadA" class="input" placeholder="Edad en años">
+        </label>
+
+
+        <label for="PesoA">
+            <p class="subt">Peso</p>
+            <input type="number" name="PesoA" id="PesoA" class="input" placeholder="Peso en Kg">
+        </label>
+
+        <label for="">
+            <p class="subt">Sexo</p>
+            <select name="SexoA" class="input" id="SexoA" >
+                <option value="" hidden>Selecciona el sexo</option>
+                <option value="Macho">Macho</option>
+                <option value="Hembra">Hembra</option>
+            </select>
+        </label>
+
+        <label>
+            <p class="subt">Descripcion del color</p>
+        <textarea class="input" name="DescripcionColorA" id="col1" cols="20" rows="10" placeholder="Descripcion del color"></textarea>
+        
+        </label>
+
+        <!-- <label for="Señas">
+            <p class="subt">Particularidades</p>
+        <textarea name="SeñasM" id="SeñasM" class="input" cols="30" rows="10" placeholder="Señas particulares"></textarea>
+        </label> -->
+
+      
+        <input class="submit" type="submit" value="Enviar"> 
+      
+        </form>
+        
+            
+
+        </div>
+        <script src="Registro Mascotas.js" type="text/javascript"></script>
     </body>
 </html>
-
 
 
 
