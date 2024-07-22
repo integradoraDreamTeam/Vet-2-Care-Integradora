@@ -6,7 +6,7 @@ const usuarios=[{
     password: "$2a$05$yyx8jAwfOOsZl17wax12AOz2UXQz7DpMWKX3ACLzMGPlWusJ5yHpK"
 }]
 async function login(req,res){
-
+    console.log(req.body);
 }
 async function registrer(req,res){
     console.log(req.body)
