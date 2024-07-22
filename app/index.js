@@ -25,3 +25,12 @@ server.get("/registromascotas",(req,res)=> res.sendFile(_dirname + "/Paginas/Reg
 server.post("/api/login",authentication.login)
 server.post("/api/registrer",authentication.registrer)
  
+//Conexion con la base de datos
+import  db from "mysql2";
+const conn=db.createConnection({
+host: "localhost",
+user: "root",          // Remplazar con tu nombre de usuario
+password: "root",  // Remplazar con tu contraseña
+database: "vet2care",
+port: 3306,
+});
