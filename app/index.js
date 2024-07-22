@@ -11,7 +11,7 @@ const _dirname = path.dirname(fileURLToPath(import.meta.url));
 import express from 'express';
 import {methods as authentication} from './controllers/authentication.controller.js';
 // j
-import  cors from "cors";
+import cors from "cors";
 import bodyParser from "body-parser";
 
 
@@ -62,8 +62,6 @@ server.get("/registromascotas",(req,res)=> res.sendFile(_dirname + "/Paginas/Reg
 server.post("/api/login",authentication.login)
 server.post("/api/registrer",authentication.registrer)
  
-<<<<<<< HEAD
-=======
 server.post("/postmascota", (req, res) => {
     const { NombreA, EspecieA, RazaA, EdadA, PesoA, SexoA, DescripcionColorA } = req.body;
 
@@ -74,7 +72,7 @@ server.post("/postmascota", (req, res) => {
         }
 
        const repetido= trow.some((row) => {
-            return row.nombre_animal == NombreA && row.especie_a == EspecieA && row.raza_a == RazaA && row.edad == EdadA && row.peso_a == PesoA && row.sexo_a == SexoA && row.info_adicional_a == DescripcionColorA 
+            return row.nombre_animal === NombreA && row.especie_a == EspecieA && row.raza_a == RazaA && row.edad == EdadA && row.peso_a == PesoA && row.sexo_a == SexoA && row.info_adicional_a == DescripcionColorA 
                 
         });
 
@@ -119,4 +117,3 @@ server.use(cors());
 
 
 
->>>>>>> 9a7770e6504ca7263746650bbe7afabdac7a9fb3
