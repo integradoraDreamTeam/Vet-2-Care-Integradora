@@ -34,3 +34,17 @@ password: "root",  // Remplazar con tu contraseña
 database: "vet2care",
 port: 3306,
 });
+
+//Comprobacion
+conn.connect((err)=> {
+    if(err){
+        console.log("Error connection to database", err);
+    }else{
+    console.log("Connected to database");
+}});
+
+
+// Para que pueda leer datos del lso formulariso 
+server.use(bodyParser.urlencoded({extended: false}))
+server.use(bodyParser.json());
+server.use(cors());
