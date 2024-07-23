@@ -4,6 +4,7 @@ import {methods as authentication} from './controllers/authentication.controller
 const server=express();
 server.set("port",4500);
 server.listen(server.get("port"));
+import cors from 'cors'
 
 //Meter el dirmane
 import path from 'path';
@@ -49,3 +50,5 @@ import bodyParser from 'body-parser';
 server.use(bodyParser.urlencoded({extended: false}))
 server.use(bodyParser.json());
 server.use(cors());
+
+//Submit en la db
