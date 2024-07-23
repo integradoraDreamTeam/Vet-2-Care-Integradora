@@ -43,6 +43,7 @@ conn.connect((err)=> {
     console.log("Connected to database");
 }});
 
+import bodyParser from 'body-parser';
 
 // Para que pueda leer datos del lso formulariso 
 server.use(bodyParser.urlencoded({extended: false}))
