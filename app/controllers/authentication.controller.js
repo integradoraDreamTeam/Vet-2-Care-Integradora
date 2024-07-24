@@ -33,26 +33,31 @@ async function login(req,res){
     if(!email || !password){
         return res.status(400).send({status:"Error", message:"Llena todo pa"})
     }
-    const usuarioRevisar=usuarios.find(usuario=>usuario.email===email)
-    if(!usuarioRevisar){
-        return res.status(400).send({status:"Error", message:"Hubo un errror pa"})
-    }
-    const loginCorrecto= await bcryptjs.compare(password,usuarioRevisar.password)
-    if(!loginCorrecto){
-        return res.status(400).send({status:"Error", message:"Hubo un errror pa"})
-    }
-    const token=jsonwebtoken.sign(
-        {email:usuarioRevisar.email},
-        process.env.JWT_SECRET,
-        {expiresIn:process.env.JWT_EXPIRATION});
-    
-    const cookieOption={
-        expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES*24*60*60*1000),
-        path:"/"
-    }
-
-    res.cookie("jwt",token,cookieOption);
-    res.send({status:"ok",message:"Usuario loggeado",redirect:"/"})
+    conn.query("select * from usuarios",async (err,datos)=>{
+        if(err){
+            return res.status(400).send({status:"Error",message:"Error la obtener los usuarios"})
+        }
+        const usuarioRevisar=datos.find(usuario=>usuario.correo===email);
+        if(!usuarioRevisar){
+            return res.status(400).send({status:"Error", message:"Hubo un errror pa"})
+        }
+        const loginCorrecto= await bcryptjs.compare(password,usuarioRevisar.contraseña)
+        if(!loginCorrecto){
+            return res.status(400).send({status:"Error", message:"Hubo un errror pa"})
+        }
+        const token=jsonwebtoken.sign(
+            {email:usuarioRevisar.email},
+            process.env.JWT_SECRET,
+            {expiresIn:process.env.JWT_EXPIRATION});
+        
+        const cookieOption={
+            expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES*24*60*60*1000),
+            path:"/"
+        }
+        console.log("login exitoso")
+        res.cookie("jwt",token,cookieOption);
+        res.send({status:"ok",message:"Usuario loggeado",redirect:"/"})
+    });
 }
 async function registrer(req,res){
     console.log(req.body)
