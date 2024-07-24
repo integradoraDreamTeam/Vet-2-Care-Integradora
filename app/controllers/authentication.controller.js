@@ -62,27 +62,27 @@ async function registrer(req,res){
     if(!name || !email || !password){
         return res.status(400).send({status:"Error", message:"Llena todo pa"})
     }
-    const usuarioRevisar=usuarios.find(usuario=>usuario.name===name)
-    if(usuarioRevisar){
-        return res.status(400).send({status:"Error", message:"Ya existe pa"})
-    }
-    const salt= await bcryptjs.genSalt(5);
-    const hashPassword= await bcryptjs.hash(password,salt);
-    const nuevoUsuario= {
-        name,email,password:hashPassword
-    }
-    
-    conn.query('insert into usuarios(nombre_usuario, contraseña, correo) values("'+name+'","'+password+'","'+email+'");',(err,result)=>{
+    conn.query("select * from usuarios",async (err,data)=>{
         if(err){
-            console.log('No se inserto pa')
-            return res.status(400).send('Hiciste algo mal pa');
+            return res.status(400).send({status:"Error",message:"No se pudo consultar pa"})
+        }
+        const usuarioRevisar=data.find(usuario=>usuario.correo===email);
+        if(usuarioRevisar){
+            return res.status(400).send({status:"Error", message:"Ya existe pa"})
+        }else{
+            const salt= await bcryptjs.genSalt(5);
+            const hashPassword= await bcryptjs.hash(password,salt);
+            conn.query('insert into usuarios(nombre_usuario, contraseña, correo) values("'+name+'","'+hashPassword+'","'+email+'");',(err,result)=>{
+                if(err){
+                    console.log('No se inserto pa')
+                    return res.status(400).send('Hiciste algo mal pa');
+                }
+            });
+            return res.status(201).send({status:"ok",message:'Si se creo pa', redirect:"/sIn"})
         }
     });
-    conn.query("select * from usuarios",(err,data)=>{
-        console.log(data)
-    })
-    return res.status(201).send({status:"ok",message:'Si se creo pa, hay te va el id ${nuevoUsuario.name}', redirect:"/sIn"})
 }
+
 
 export const methods={
     login,
