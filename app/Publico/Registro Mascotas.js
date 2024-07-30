@@ -23,4 +23,48 @@ document.addEventListener('DOMContentLoaded', () => {
             raza.appendChild(opcion);
         });
     });
+
+
+const modal = document.getElementById("modal_container");
+const cerrar_modal = document.getElementById("cerrar_alerta");
+
+cerrar_modal.addEventListener("click", () => {
+    modal.close();
+});
+
+ function abrir_alertaM() {
+    if (modal) {
+        modal.showModal();
+    }
+}
+
+const form = document.querySelector('form');
+form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(form);
+    const formJSON = Object.fromEntries(formData.entries());
+
+    try {
+        const response = await fetch('/postmascota', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formJSON)
+        });
+
+        if (!response.ok) {
+            if (response.status === 400) {
+                abrir_alertaM();
+            } else {
+                console.error('Error en el servidor');
+            }
+        } else {
+            window.location.href = '/';
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
+});
 });

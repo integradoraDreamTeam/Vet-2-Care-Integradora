@@ -64,7 +64,7 @@ p{
   font-size: x-large;
 }
 body{
-  background-image: url(Fondo_RMascotas.jpg);
+  background-image: url(/Fondo_RMascotas.jpg);
   background-position: center;
   background-size: cover;
   display: flex;
@@ -94,4 +94,31 @@ h3{
 max-width: 299.225px;
 min-width: 299.225px;
 max-height: 120px;
+}
+
+.modal_container{ 
+background-color: rgba(236, 204, 204, 0.63);
+
+top: 0;
+left: 0;
+height: 100vh;
+width: 100vw;
+}
+
+.modal{
+background-color: bisque;
+width: 600px;
+max-width: 100%;
+padding: 30px 50px;
+box-shadow: 4px 2px 4px;
+text-align: center;
+}
+dialog{
+  justify-content: center;
+  align-items: center;
+}
+dialog[open]{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -3,7 +3,7 @@
  de llevar un historial médico y agendar citas para tus mascotas.-->
  <html>
     <head>
-        <link rel="stylesheet" href="Mascotas Registro.css" type="text/css">
+        <link rel="stylesheet" href="/Mascotas Registro.css" type="text/css">
         
     </head>
     <body>
@@ -74,11 +74,21 @@
         <input class="submit" type="submit" value="Enviar"> 
       
         </form>
-        
-            
-
         </div>
-        <script src="Registro Mascotas.js" type="text/javascript"></script>
+
+<button id="abrir_alerta">Abrir</button>
+
+<dialog  class="modal_container" id="modal_container">
+<div class="modal" id="modal">
+
+<h1 id="titulo_alerta">Datos repetidos</h1>
+<p id="cuerpo_alerta"> Los datos ingresados ya estan registrados</p>
+<button id="cerrar_alerta">Cerrar</button>
+</div>
+</dialog>
+
+
+        <script src="/Registro Mascotas.js" type="module"></script>
     </body>
 </html>
 
