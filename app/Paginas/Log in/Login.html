@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="png" href="veterinario.png">
+        <link rel="stylesheet" href="Registro usuario.css">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <title>Inicia sesión</title>
+    </head>
+    <body>
+        <div class="form-container logIn">
+            <div class="info-section">
+                <div class="info-content">
+                    <h2>Bienvenido</h2>
+                    <p>¿Aún no estas registrado?</p>
+                    <a href="/sUp"><input type="button" value="Registrarse" id="sign-up"></a>
+                </div>
+            </div>
+            <div class="form-section" id="login-form">
+                <div class="form-content">
+                    <h2>Iniciar sesión</h2>
+                    <div class="social-icons">
+                        <i class='bx bxl-google'><ion-icon name="logo-google"></ion-icon></i>
+                        <i class='bx bxl-linkedin'><ion-icon name="logo-linkedin"></ion-icon></i>
+                    </div>
+                    <p>Por favor, inicia sesión con tus datos</p>
+                    <form class="user-form">
+                        <label id="emailab">
+                            <i class='bx bx-envelope'><box-icon name='envelope'></box-icon></i>
+                            <input type="email" placeholder="Correo electronico" id="email">
+                        </label>
+                        <label id="passlab">
+                            <i class='bx bx-lock-alt'><box-icon name='lock-alt'></box-icon></i>
+                            <input type="password" placeholder="Contraseña" id="pass">
+                        </label>
+                        <button type="submit">Iniciar sesión</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script src="Login.js"></script>
+    </body>
+</html>

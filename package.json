@@ -1,0 +1,28 @@
+{
+  "name": "vet-2-care-integradora",
+  "version": "1.0.0",
+  "description": "Este es el repositorio para todas las funcionalidades Front-End para el proyecto integrador: Vet 2 Care",
+  "main": "app/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon --exec node app/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parse": "^0.1.0",
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.10.3",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
