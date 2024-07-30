@@ -26,6 +26,7 @@ server.get("/s",(req,res)=> res.sendFile(_dirname + "/Paginas/Tienda/Productos/P
 server.get("/registromascotas",(req,res)=> res.sendFile(_dirname + "/Paginas/Registro mascota/Registro mascota.html"))
 server.post("/api/login",authentication.login)
 server.post("/api/registrer",authentication.registrer)
+server.post("/api/getData",authentication.getData)
  
 //Conexion con la base de datos
 import db from "mysql2";

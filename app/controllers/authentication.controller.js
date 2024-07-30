@@ -84,7 +84,19 @@ async function registrer(req,res){
     });
 }
 
+function getData(req,res){
+    const nombre=req.body.name;
+    conn.query("select * from productos where nombre_producto="+nombre+";",(err,data)=>{
+        if (err){
+            return res.status(400).send("No se pudo pa")
+        }else{
+            return res.send(data);
+        }
+    })
+}
+
 export const methods={
     login,
-    registrer
+    registrer,
+    getData
 }
