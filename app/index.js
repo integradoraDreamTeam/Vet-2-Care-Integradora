@@ -22,6 +22,7 @@ server.get("/sUp",(req,res)=> res.sendFile(_dirname + "/Paginas/Registro usuario
 server.get("/sIn",(req,res)=> res.sendFile(_dirname + "/Paginas/Log in/Login.html"))
 server.get("/sMa",(req,res)=> res.sendFile(_dirname + "/Paginas/Registro mascota/Registro mascota.html"))
 server.get("/store",(req,res)=> res.sendFile(_dirname + "/Paginas/Tienda/Tienda main/Tienda.html"))
+server.get("/s",(req,res)=> res.sendFile(_dirname + "/Paginas/Tienda/Productos/Productos.html"))
 server.get("/registromascotas",(req,res)=> res.sendFile(_dirname + "/Paginas/Registro mascota/Registro mascota.html"))
 server.post("/api/login",authentication.login)
 server.post("/api/registrer",authentication.registrer)
