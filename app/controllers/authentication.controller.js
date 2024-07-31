@@ -6,7 +6,7 @@ import db from "mysql2";
 const conn=db.createConnection({
 host: "localhost",
 user: "root",          // Remplazar con tu nombre de usuario
-password: "root",  // Remplazar con tu contraseña
+password: "juanito1",  // Remplazar con tu contraseña
 database: "vet2care",
 port: 3306,
 });

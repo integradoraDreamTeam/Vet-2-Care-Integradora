@@ -24,7 +24,7 @@ server.get("/sMa",(req,res)=> res.sendFile(_dirname + "/Paginas/Registro mascota
 server.get("/store",(req,res)=> res.sendFile(_dirname + "/Paginas/Tienda/Tienda main/Tienda.html"))
 server.get("/s",(req,res)=> res.sendFile(_dirname + "/Paginas/Tienda/Productos/Productos.html"))
 server.get("/e",(req,res)=> res.sendFile(_dirname + "/Paginas/Main pre/mainpre_english.html"))
-server.get("/cita",(req,res)=> res.sendFile(_dirname + "/Paginas/Registro cita/citas.html"))
+server.get("/cita",(req,res)=> res.sendFile(_dirname + "/Paginas/Registro citas/citas.html"))
 server.get("/registromascotas",(req,res)=> res.sendFile(_dirname + "/Paginas/Registro mascota/Registro mascota.html"))
 server.post("/api/login",authentication.login)
 server.post("/api/registrer",authentication.registrer)
@@ -35,7 +35,7 @@ import db from "mysql2";
 const conn=db.createConnection({
 host: "localhost",
 user: "root",          // Remplazar con tu nombre de usuario
-password: "root",  // Remplazar con tu contraseña
+password: "juanito1",  // Remplazar con tu contraseña
 database: "vet2care",
 port: 3306,
 });
