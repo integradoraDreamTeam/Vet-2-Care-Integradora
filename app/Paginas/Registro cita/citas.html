@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda tu cita</title>
+    <link rel="stylesheet" href="citas.css">
+</head>
+<body bgcolor="f8fff8">
+
+        <!-- INICIO HEADER -->
+        <div class="header">
+            <img src="Vet 2 Care.png" style="width: 8.321775312vw; height: 120px;">
+            <ul>
+                <li>Inicio</li>
+                <li>Tienda</li>
+                <li>Nosotros</li>
+                <li>Tu cuenta</li>
+            </ul>
+            <button class="btn">Añadir mascota</button>
+            <button class="btn">Agendar cita</button>
+        </div>
+        <!-- FIN HEADER -->
+        <!-- INICIO FORM CITAS -->
+        <div class="pets">
+            <div class="card">
+                <form action="/postmascota" method="post"> 
+                    <div class="innercard">  
+                        <div class="primarydata">    
+                            <label for="Mascota">
+                                <h2>Escoge tu mascota</h2>
+                                <select name="MascotaA" class="input" id="MascotaA" title="Nombre de mascota">
+                                    <option hidden>Escoger</option>
+                                    <option value="Nombre_mascota">Nombre_mascota</option>
+                                </select>
+                            </label>
+                            <label for="Fecha">
+                                <h2>Aparta una fecha</h2>
+                                <input type="date" class="input"/>
+                            </label>
+                            <label for="Hora">
+                                <h2>Aparta una hora</h2>
+                                <input type="time" class="input"/>
+                            </label>
+                        </div>
+                        <div class="descdata">
+                            <label for="Motivo">
+                                <h2>Motivo</h2>
+                                <textarea class="input" name="Motivo" id="col1" cols="20" rows="10" placeholder="Motivo de la cita"></textarea>
+                            </label> 
+                        </div>
+                        <div style="display: flex; width: 40vw; justify-content: center;">
+                            <input class="submit" type="submit" value="Enviar">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- FIN FORM CITAS -->
+        <!-- INICIO FOOTER -->
+        <div class="footer">
+            <div class="left-footer-block">
+                <h2>Acerca de</h2>
+                <h3>Descuentos</h3>
+                <h3>Vacantes</h3>
+                <h3>Horarios</h3>
+            </div>
+            <div class="left-footer-block">
+                <h2>Ayuda</h2>
+                <h3>Preguntas frecuentes</h3>
+                <h3>Atención al cliente</h3>
+                <h3>Contáctanos</h3>
+            </div>
+            <div class="center-footer-block">
+                <img src="Vet 2 Care.png" style="width: 8.321775312vw; height: 120px;">
+                <div class="social-icons">
+                    <img src="x.png">
+                    <img src="facebook.png">
+                    <img src="insta.png">
+                </div>
+            </div>
+            <div class="right-footer-block">
+                <h2>Asuntos legales</h2>
+                <h3>Términos de servicio</h3>
+                <h3>Protección de datos</h3>
+                <h3>Cookies</h3>
+            </div>
+            <div class="right-footer-block">
+                <h2>Contacto</h2>
+                <h3>vet@care.com</h3>
+                <h3>614-369-3696</h3>
+                <h3>614-303-3033</h3>
+            </div>
+        </div>
+        <!-- FIN FOOTER -->
+</body>
+</html>
