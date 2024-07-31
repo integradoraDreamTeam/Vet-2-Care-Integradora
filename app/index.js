@@ -37,7 +37,7 @@ import db from "mysql2";
 const conn=db.createConnection({
 host: "localhost",
 user: "root",          // Remplazar con tu nombre de usuario
-password: "root",  // Remplazar con tu contraseña
+password: "juanito1",  // Remplazar con tu contraseña
 database: "vet2care",
 port: 3306,
 });
@@ -79,7 +79,7 @@ server.post("/postmascota", (req, res) => {
                 INSERT INTO animales(nombre_animal, especie_a, raza_a, edad, peso_a, sexo_a, info_adicional_a, fk_usuario)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?);
             `;
-            const insertValues = [NombreA, EspecieA, RazaA, EdadA, PesoA, SexoA, DescripcionColorA, 3];
+            const insertValues = [NombreA, EspecieA, RazaA, EdadA, PesoA, SexoA, DescripcionColorA, 1];
 
             conn.query(insertQuery, insertValues, (err, results) => {
                 if (err) {

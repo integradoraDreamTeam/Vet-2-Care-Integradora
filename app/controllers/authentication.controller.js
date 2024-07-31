@@ -3,10 +3,10 @@ import jsonwebtoken from 'jsonwebtoken';
 import dotenv from 'dotenv';
 
 import db from "mysql2";
-const conn=db.createConnection({
+ const conn=db.createConnection({
 host: "localhost",
 user: "root",          // Remplazar con tu nombre de usuario
-password: "root",  // Remplazar con tu contraseña
+password: "juanito1",  // Remplazar con tu contraseña
 database: "vet2care",
 port: 3306,
 });
@@ -18,6 +18,7 @@ conn.connect((err)=> {
     }else{
     console.log("Connected to database");
 }});
+
 
 dotenv.config();
 
@@ -95,8 +96,22 @@ function getData(req,res){
     })
 }
 
+conn.query(`select nombre_animal from Animales where fk_usuario = 1 ;`, async => (err,data) =>{
+
+    if(err){
+        return console.log(1);
+    }
+   console.log(data)
+
+
+})
+
+
+
+
 export const methods={
     login,
     registrer,
     getData
+    
 }
