@@ -1,5 +1,7 @@
-async function rellenar(event){
-    nombre=event.target.id
+document.addEventListener('DOMContentLoaded',async ()=>{ 
+    const urlParams = new URLSearchParams(window.location.search);
+    const nombre = urlParams.get('nombre');   
+    console.log(nombre)
     const res=await fetch("http://localhost:4500/api/getData",{
         method:"POST",
         headers:{
@@ -11,15 +13,17 @@ async function rellenar(event){
     });
     if(!res.ok) return;
     const resJson= await res.json();
-    const contenedor=document.getElementById('container');
+    const prod=resJson.find(usr=>usr.nombre_producto===nombre)
+    console.log(prod)
+    const contenedor=document.getElementById('cont');
         const h2=document.createElement('h2');
-        h2.innerHTML=resJson.nombre_producto;
+        h2.innerHTML=prod.nombre_producto;
         const h3=document.createElement('h3');
-        h3.innerHTML=resJson.descripcion_breve;
+        h3.innerHTML=prod.descripcion_breve;
         const precioH2=document.createElement('h2');
-        precioH2.innerHTML=resJson.precio;
+        precioH2.innerHTML=prod.precio;
         const h4=document.createElement('h4');
-        h4.innerHTML=resJson.descripcion;
+        h4.innerHTML=prod.descripcion;
         const button=document.createElement('button');
         button.className="btn";
         button.innerHTML="Comprar";
@@ -28,4 +32,4 @@ async function rellenar(event){
         h3.appendChild(precioH2);
         h2.appendChild(h3);
         contenedor.appendChild(h2);
-}
+});
