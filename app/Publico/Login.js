@@ -2,7 +2,7 @@ document.getElementById('login-form').addEventListener("submit", async (e)=>{
     e.preventDefault();
     const email=e.target.children.emailab.children.email.value;
     const password=e.target.children.passlab.children.pass.value;
-    const res=await fetch("https://vet-2-care-integradora.onrender.com",{
+    const res=await fetch("https://localhost:4500/api/login",{
         method:"POST",
         headers:{
             "Content-Type" : "application/json"
