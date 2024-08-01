@@ -13,12 +13,12 @@ document.addEventListener('DOMContentLoaded',()=>{
       return response.json(); // Asume que la respuesta es JSON
     })
     .then(data => {
-
+      console.log('Datos recibidos:', data);
     // Se insertan en las opciones del form, los animales disponibles
     const formCita=document.getElementById('MascotaA') 
     data.forEach(breed => {
     const opcion = document.createElement("option");
-    opcion.value = breed.nombre_animal;
+    opcion.value = breed.id_animal;
     opcion.textContent = breed.nombre_animal;
     formCita.appendChild(opcion);
 
@@ -57,17 +57,16 @@ document.addEventListener('DOMContentLoaded',()=>{
     })
     .then(data => {
       // Como le hagoooo
-          const horas = data.map(item => item.hora_cita_disponible);
-          console.log('Horas:', horas);
+          
 
           const selectElement = document.getElementById('horaRcita');
-          if (selectElement) {
-              horas.forEach(hora => {
+         
+              data.forEach(breed=> {
                   const option = document.createElement('option');
-                  option.value = hora;
-                  option.textContent = hora;
+                  option.value = breed.id;
+                  option.textContent = breed.hora_cita_disponible;
                   selectElement.appendChild(option);
-              });}
+              });
           
   });
 

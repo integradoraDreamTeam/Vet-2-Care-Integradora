@@ -27,7 +27,6 @@ server.get("/e",(req,res)=> res.sendFile(_dirname + "/Paginas/Main pre/mainpre_e
 server.get("/cita",(req,res)=> res.sendFile(_dirname + "/Paginas/Registro citas/citas.html"))
 server.get("/registromascotas",(req,res)=> res.sendFile(_dirname + "/Paginas/Registro mascota/Registro mascota.html"))
 server.get("/extrinfoanimales", (req,res)=>{
-   
     conn.query('SELECT nombre_animal from animales where fk_usuario = 1;', (err,resu)=>{
         if(err){
            console.log(err)}
@@ -38,7 +37,7 @@ server.get("/horasdisponibles",(req,res)=>{
     conn.query('SELECT nombre_animal from animales where fk_usuario = 1;', (err,resu)=>{
         if(err){
            console.log(err)}
- res.send(resu)
+ res.json(resu)
     })
 
 })
@@ -48,6 +47,11 @@ server.get("/horasdisponibles",(req,res)=>{
 server.post("/api/login",authentication.login)
 server.post("/api/registrer",authentication.registrer)
 server.post("/api/getData",authentication.getData)
+
+
+
+
+
 let resultadohorasCitas = [];
 server.post("/llegafecha",(req,res)=>{
     const checarfecha = req.body.fecha;
@@ -127,3 +131,8 @@ server.post("/postmascota", (req, res) => {
     });
 });
 
+server.post("/postcitasmascota",(req,res)=>{
+const datoscita={}
+
+
+})
