@@ -4,31 +4,39 @@
 
 
 document.addEventListener('DOMContentLoaded',async ()=>{
-    //Cambiar por fetch a backend
-    const infoA= await fetch('/extrinfoanimales')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json(); // Asume que la respuesta es JSON
-    })
-    .then(data => {
-      console.log('Datos recibidos:', data);
-    // Se insertan en las opciones del form, los animales disponibles
-    const formCita=document.getElementById('MascotaA') 
-    data.forEach(breed => {
-    const opcion = document.createElement("option");
-    opcion.value = breed.id_animal;
-    console.log(breed.id_animal);
-    opcion.textContent = breed.nombre_animal;
-    formCita.appendChild(opcion);
+  const modal = document.getElementById("modal_container");
+  const cerrar_modal = document.getElementById("cerrar_alerta");
+    
+  try {
+    const response = await fetch('/extrinfoanimales');
+    if (!response.ok) {
+        if (response.status === 404) {
+          abrir_alertaM();
+        } else {
+            console.error('Error en la solicitud:', response.statusText);
+        }
+        return; // Salir si hay un error
+    }
 
+    const data = await response.json();
+
+    if (data.length === 0) {
+        console.log('No se encontraron animales');
+    } else {
+        console.log('Datos recibidos:', data);
+
+        // Se insertan en las opciones del form, los animales disponibles
+        const formCita = document.getElementById('MascotaA');
+        data.forEach(breed => {
+            const opcion = document.createElement("option");
+            opcion.value = breed.id_animal;
+            opcion.textContent = breed.nombre_animal;
+            formCita.appendChild(opcion);
         });
-
-    })
-    .catch(error => {
-      console.error('Hubo un problema con la solicitud fetch:', error);
-    });
+    }
+} catch (error) {
+    console.error('Hubo un problema con la solicitud fetch:', error);
+}
 
     const fechaT=document.getElementById('fechaRcita');
 
@@ -65,6 +73,15 @@ document.addEventListener('DOMContentLoaded',async ()=>{
 
     })
     
-
+    
+    cerrar_modal.addEventListener("click", () => {
+      window.location.href = '/'
+    });
+    
+     function abrir_alertaM() {
+        if (modal) {
+            modal.showModal();
+        }
+    }
 
 })
