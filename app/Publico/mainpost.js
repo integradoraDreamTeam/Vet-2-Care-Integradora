@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', async ()=>{
     const urlParams = new URLSearchParams(window.location.search);
     const correo = urlParams.get('correo');   
     console.log(correo)
-    const res=await fetch("https://vet-2-care-integradora.onrender.com",{
+    const res=await fetch("https://localhost:4500/api/getUSR",{
         method:"POST",
         headers:{
             "Content-Type" : "application/json"
