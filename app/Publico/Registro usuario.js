@@ -1,7 +1,7 @@
 document.getElementById("userForm").addEventListener("submit", async (e)=>{
     e.preventDefault();
     //console.log(e)
-    const res=await fetch("http://localhost:4500/api/registrer",{
+    const res=await fetch("https://vet-2-care-integradora.onrender.com",{
         method:"POST",
         headers:{
             "Content-Type" : "application/json"
