@@ -5,7 +5,7 @@
 
 document.addEventListener('DOMContentLoaded',async ()=>{
   const modal = document.getElementById("modal_container");
-  const cerrar_modal = document.getElementById("cerrar_alerta");
+  const cerrar_modal = document.getElementById("cerrar_alertaa");
     
   try {
     const response = await fetch('/extrinfoanimales');
@@ -74,8 +74,9 @@ document.addEventListener('DOMContentLoaded',async ()=>{
     })
     
     
-    cerrar_modal.addEventListener("click", () => {
-      window.location.href = '/'
+    cerrar_modal.addEventListener('click', () => {
+      window.location.href = ("/");
+      console.log(kk)
     });
     
      function abrir_alertaM() {
