@@ -34,12 +34,36 @@ server.get("/extrinfoanimales", (req,res)=>{
  res.send(resu)
     })
 })
+server.get("/horasdisponibles",(req,res)=>{
+    conn.query('SELECT nombre_animal from animales where fk_usuario = 1;', (err,resu)=>{
+        if(err){
+           console.log(err)}
+ res.send(resu)
+    })
+
+})
 
 
 
 server.post("/api/login",authentication.login)
 server.post("/api/registrer",authentication.registrer)
 server.post("/api/getData",authentication.getData)
+let resultadohorasCitas = [];
+server.post("/llegafecha",(req,res)=>{
+    const checarfecha = req.body.fecha;
+    -
+        conn.query('SELECT hora_cita_disponible from citas_disponibles where fecha_cita_disponible = ?;',[checarfecha], (err,resu)=>{
+            if(err){
+                console.error(err);
+                res.status(500).send('Error en la consulta');
+            }else{
+    resultadohorasCitas=resu
+     res.json(resu);}
+        })
+})
+server.get("/horasdisponibles", (req, res) => {
+    res.json(resultadohorasCitas);
+});
  
 //Conexion con la base de datos
 import db from "mysql2";
