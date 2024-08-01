@@ -29,7 +29,9 @@ const modal = document.getElementById("modal_container");
 const cerrar_modal = document.getElementById("cerrar_alerta");
 
 cerrar_modal.addEventListener("click", () => {
-    modal.close();
+    
+    window.location.href = '/registromascotas';
+    modal.close();  
 });
 
  function abrir_alertaM() {

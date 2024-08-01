@@ -224,16 +224,16 @@ p {
 }
 
 .modal_container { 
-  display: flex;
+  
   background-color: rgba(201, 201, 201, 0.63);
   top: 0;
   left: 0;
   height: 100vw;
-  width: auto;
+  width: 100vw;
   border: 0px;
 }
 
-.modal_container .card {
+.modal_container .card{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -250,9 +250,10 @@ p {
 dialog {
   justify-content: center;
   align-items: center;
+  
 }
 
-dialog [open] {
+dialog[open] {
   display: flex;
   justify-content: center;
   align-items: center;
