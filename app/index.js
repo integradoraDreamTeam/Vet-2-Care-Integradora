@@ -51,20 +51,22 @@ server.post("/api/getData",authentication.getData)
 
 
 
+let resultadohorasCitas = {};
 
-let resultadohorasCitas = [];
-server.post("/llegafecha",(req,res)=>{
+server.post("/llegafecha", (req, res) => {
     const checarfecha = req.body.fecha;
-    -
-        conn.query('SELECT hora_cita_disponible from citas_disponibles where fecha_cita_disponible = ?;',[checarfecha], (err,resu)=>{
-            if(err){
-                console.error(err);
-                res.status(500).send('Error en la consulta');
-            }else{
-    resultadohorasCitas=resu
-     res.json(resu);}
-        })
-})
+    
+    conn.query('SELECT hora_cita_disponible FROM citas_disponibles WHERE fecha_cita_disponible = ? ;', [checarfecha], (err, resultadoConsulta) => {
+        if (err) {
+            console.error(err);
+            res.status(500).send('Error en la consulta');
+        } else {
+            resultadohorasCitas = resultadoConsulta;
+            res.json(resultadoConsulta);
+        }
+    });
+});
+
 server.get("/horasdisponibles", (req, res) => {
     res.json(resultadohorasCitas);
 });

@@ -44,33 +44,36 @@ document.addEventListener('DOMContentLoaded',()=>{
         body: JSON.stringify(fechaTent)
     })
     .then(response => response.json())
-    .then(data => console.log('Success:', data))
+    .then(data => {
+      console.log(data);
+
+      // Verifica que el elemento existe
+      const selectElement = document.getElementById('horaRcita');
+     
+        data.forEach(item => {
+          const option = document.createElement('option');
+          option.value = item.id_cita; // Asegúrate de que `id_cita` es el nombre correcto del atributo
+          option.textContent = item.hora_cita_disponible;
+          selectElement.appendChild(option);
+        });
+    
+    
+    })
     .catch(error => console.error('Error:', error));
 
     })
-    const infofechas= fetch('/horasdisponibles')
+    const infofechas = fetch('/horasdisponibles')
     .then(response => {
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
       return response.json(); 
     })
-    .then(data => {
-      // Como le hagoooo
-          
-
-          const selectElement = document.getElementById('horaRcita');
-         
-              data.forEach(breed=> {
-                  const option = document.createElement('option');
-                  option.value = breed.id;
-                  option.textContent = breed.hora_cita_disponible;
-                  selectElement.appendChild(option);
-              });
-          
-  });
-
-
+    .then(data 
+      )
+    .catch(error => {
+      console.error('There was a problem with the fetch operation:', error);
+    });
 
 
 })
