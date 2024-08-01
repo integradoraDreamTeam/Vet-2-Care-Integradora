@@ -100,7 +100,7 @@ server.use(cors());
 server.post("/postmascota", (req, res) => {
     const { NombreA, EspecieA, RazaA, EdadA, PesoA, SexoA, DescripcionColorA } = req.body;
 
-    conn.query("SELECT * FROM animales WHERE fk_usuario = 3;", (err, trow) => {
+    conn.query("SELECT * FROM animales WHERE fk_usuario = 3;", (err, trow) => { //Insertar id_usuario
         if (err) {
             console.log("Error fetching data", err);
             return res.status(500).send("Error fetching data");
@@ -134,7 +134,20 @@ server.post("/postmascota", (req, res) => {
 });
 
 server.post("/postcitasmascota",(req,res)=>{
-const datoscita={}
+ const { fk_animal, fecha, hora, motivo} = req.body;
+ const insertQuery = `
+ INSERT INTO citas (fk_animal, fk_usuario, fecha, hora, motivo_cita) VALUES
+ (?, ?, ?, ?, ?)`;
+ const valorescitas= [fk_animal,3, fecha, hora, motivo]; //Insertar id_usuario
 
+ conn.query(insertQuery,valorescitas, (err,result)=> {
+    if (err) {
+        console.log("Error al insertar cita", err);
+        return res.status(500).send("Error al insertar cita");
+    }
 
+    console.log("Data inserted successfully");
+    return result.redirect("/"); // Poner bien la redirect
+
+ })
 })
