@@ -2,6 +2,7 @@ import bcryptjs from 'bcryptjs';
 import jsonwebtoken from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import {conn} from '../index.js'
+import { func } from 'promisify';
 
 dotenv.config();
 
@@ -98,9 +99,25 @@ function getPets(req,res){
     })
 }
 
+function revisarCookie(req,res){
+    console.log('Si entro')
+    const deco=jsonwebtoken.verify(req.body.cookie,process.env.JWT_SECRET);
+    console.log(deco);
+    conn.query('select * from usuarios',(err,data)=>{
+        const usuarioRevisar=data.find(usuario=>usuario.correo===deco.email);
+        console.log(usuarioRevisar)
+        if(usuarioRevisar){
+            return res.send(usuarioRevisar);
+        }else{
+            return console.log('error')
+        }
+    })
+}    
+
 export const methods={
     login,
     registrer,
     getData,
-    getPets
+    getPets,
+    revisarCookie
 }
