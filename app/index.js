@@ -39,10 +39,10 @@ server.post("/api/getPets",authentication.getPets)
 //Conexion con la base de datos
 import db from "mysql2";
 export const conn=db.createConnection({
-host: "localhost",
-user: "root",          // Remplazar con tu nombre de usuario
-password: "root",  // Remplazar con tu contraseña
-database: "vet2care",
+host: process.env.HOST || "localhost",
+user: process.env.USER ||  "root",          // Remplazar con tu nombre de usuario
+password: process.env.PASSWORD || "root",  // Remplazar con tu contraseña
+database: process.env.DATABASE || "vet2care",
 port: 3306,
 });
 
