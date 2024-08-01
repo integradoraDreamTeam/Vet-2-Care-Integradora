@@ -27,7 +27,7 @@ server.get("/e",(req,res)=> res.sendFile(_dirname + "/Paginas/Main pre/mainpre_e
 server.get("/cita",(req,res)=> res.sendFile(_dirname + "/Paginas/Registro citas/citas.html"))
 server.get("/registromascotas",(req,res)=> res.sendFile(_dirname + "/Paginas/Registro mascota/Registro mascota.html"))
 server.get("/extrinfoanimales", (req,res)=>{
-    conn.query('SELECT nombre_animal from animales where fk_usuario = 1;', (err,resu)=>{
+    conn.query('SELECT nombre_animal, id_animal from animales where fk_usuario = 1;', (err,resu)=>{
         if(err){
            console.log(err)}
  res.send(resu)
@@ -128,12 +128,12 @@ server.post("/postmascota", (req, res) => {
 
 server.post("/postcitasmascota",(req,res)=>{
     console.log(req.body)
- const { fk_animal, fecha, hora, motivo} = req.body;
+ const { MascotaA, fechaRC, horaRcita, Motivo} = req.body;
 
  const insertQuery = `
  INSERT INTO citas (fk_animal, fk_usuario, fecha, hora, motivo_cita) VALUES
  (?, ?, ?, ?, ?)`;
- const valorescitas= [fk_animal,1, fecha, hora, motivo]; //Insertar id_usuario
+ const valorescitas= [MascotaA ,1, fechaRC, horaRcita, Motivo]; //Insertar id_usuario
 
  conn.query(insertQuery, valorescitas, (err,result)=> {
     if (err) {

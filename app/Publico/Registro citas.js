@@ -3,9 +3,9 @@
 //Comprobacion
 
 
-document.addEventListener('DOMContentLoaded',()=>{
+document.addEventListener('DOMContentLoaded',async ()=>{
     //Cambiar por fetch a backend
-    const infoA= fetch('/extrinfoanimales')
+    const infoA= await fetch('/extrinfoanimales')
     .then(response => {
       if (!response.ok) {
         throw new Error('Network response was not ok');
@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded',()=>{
           const option = document.createElement('option');
           option.value = item.hora_cita_disponible; // Asegúrate de que `id_cita` es el nombre correcto del atributo
           option.textContent = item.hora_cita_disponible;
+            console.log(item.hora_cita_disponible)
           selectElement.appendChild(option);
         });
     
@@ -63,18 +64,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     .catch(error => console.error('Error:', error));
 
     })
-    const infofechas = fetch('/horasdisponibles')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json(); 
-    })
-    .then(data 
-      )
-    .catch(error => {
-      console.error('There was a problem with the fetch operation:', error);
-    });
+    
 
 
 })
