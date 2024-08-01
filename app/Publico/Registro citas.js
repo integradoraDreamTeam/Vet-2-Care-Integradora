@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     data.forEach(breed => {
     const opcion = document.createElement("option");
     opcion.value = breed.id_animal;
+    console.log(breed.id_animal);
     opcion.textContent = breed.nombre_animal;
     formCita.appendChild(opcion);
 
@@ -52,7 +53,7 @@ document.addEventListener('DOMContentLoaded',()=>{
      
         data.forEach(item => {
           const option = document.createElement('option');
-          option.value = item.id_cita; // Asegúrate de que `id_cita` es el nombre correcto del atributo
+          option.value = item.hora_cita_disponible; // Asegúrate de que `id_cita` es el nombre correcto del atributo
           option.textContent = item.hora_cita_disponible;
           selectElement.appendChild(option);
         });

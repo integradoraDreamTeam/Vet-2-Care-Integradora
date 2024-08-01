@@ -33,14 +33,7 @@ server.get("/extrinfoanimales", (req,res)=>{
  res.send(resu)
     })
 })
-server.get("/horasdisponibles",(req,res)=>{
-    conn.query('SELECT nombre_animal from animales where fk_usuario = 1;', (err,resu)=>{
-        if(err){
-           console.log(err)}
- res.json(resu)
-    })
 
-})
 
 
 
@@ -56,7 +49,7 @@ let resultadohorasCitas = {};
 server.post("/llegafecha", (req, res) => {
     const checarfecha = req.body.fecha;
     
-    conn.query('SELECT hora_cita_disponible FROM citas_disponibles WHERE fecha_cita_disponible = ? ;', [checarfecha], (err, resultadoConsulta) => {
+    conn.query('SELECT hora_cita_disponible FROM citas_disponibles WHERE fecha_cita_disponible = ? and disponible_cita=0 ;', [checarfecha], (err, resultadoConsulta) => {
         if (err) {
             console.error(err);
             res.status(500).send('Error en la consulta');
@@ -118,7 +111,7 @@ server.post("/postmascota", (req, res) => {
                 INSERT INTO animales(nombre_animal, especie_a, raza_a, edad, peso_a, sexo_a, info_adicional_a, fk_usuario)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?);
             `;
-            const insertValues = [NombreA, EspecieA, RazaA, EdadA, PesoA, SexoA, DescripcionColorA, 3];
+            const insertValues = [NombreA, EspecieA, RazaA, EdadA, PesoA, SexoA, DescripcionColorA, 1]; //Insertar id_usuario
 
             conn.query(insertQuery, insertValues, (err, results) => {
                 if (err) {
@@ -134,20 +127,22 @@ server.post("/postmascota", (req, res) => {
 });
 
 server.post("/postcitasmascota",(req,res)=>{
+    console.log(req.body)
  const { fk_animal, fecha, hora, motivo} = req.body;
+
  const insertQuery = `
  INSERT INTO citas (fk_animal, fk_usuario, fecha, hora, motivo_cita) VALUES
  (?, ?, ?, ?, ?)`;
- const valorescitas= [fk_animal,3, fecha, hora, motivo]; //Insertar id_usuario
+ const valorescitas= [fk_animal,1, fecha, hora, motivo]; //Insertar id_usuario
 
- conn.query(insertQuery,valorescitas, (err,result)=> {
+ conn.query(insertQuery, valorescitas, (err,result)=> {
     if (err) {
         console.log("Error al insertar cita", err);
         return res.status(500).send("Error al insertar cita");
-    }
+    }else{
 
     console.log("Data inserted successfully");
-    return result.redirect("/"); // Poner bien la redirect
-
+    return res.redirect("/"); // Poner bien la redirect
+}
  })
 })
