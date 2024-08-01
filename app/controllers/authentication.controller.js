@@ -99,11 +99,6 @@ function getPets(req,res){
     })
 }
 
-function getUsr(req,res){
-    const correo=req.body.email;
-    conn.query('select * from ')
-}
-
 function revisarCookie(req,res){
     console.log('Si entro')
     const deco=jsonwebtoken.verify(req.body.cookie,process.env.JWT_SECRET);
