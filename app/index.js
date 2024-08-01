@@ -26,6 +26,17 @@ server.get("/s",(req,res)=> res.sendFile(_dirname + "/Paginas/Tienda/Productos/P
 server.get("/e",(req,res)=> res.sendFile(_dirname + "/Paginas/Main pre/mainpre_english.html"))
 server.get("/cita",(req,res)=> res.sendFile(_dirname + "/Paginas/Registro citas/citas.html"))
 server.get("/registromascotas",(req,res)=> res.sendFile(_dirname + "/Paginas/Registro mascota/Registro mascota.html"))
+server.get("/extrinfoanimales", (req,res)=>{
+   
+    conn.query('SELECT nombre_animal from animales where fk_usuario = 1;', (err,resu)=>{
+        if(err){
+           console.log(err)}
+ res.send(resu)
+    })
+})
+
+
+
 server.post("/api/login",authentication.login)
 server.post("/api/registrer",authentication.registrer)
 server.post("/api/getData",authentication.getData)
