@@ -155,6 +155,28 @@ p {
     transition: 0.3s;
 }
 
+.btn {
+    width: auto;
+    height: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    font-size: 18px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #314E23;
+    color: #f8fff8;
+    transition: background-color 0.5s, color 0.5s;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #7ED957;
+    color: #fff;
+}
+
 .footer {
     margin-top: 50px;
     height: 264px;
@@ -200,3 +222,38 @@ p {
 .social-icons img{
     width: 2.8vw;
 }
+
+.modal_container { 
+    display: flex;
+    background-color: rgba(201, 201, 201, 0.63);
+    top: 0;
+    left: 0;
+    height: 100vw;
+    width: auto;
+    border: 0px;
+  }
+  
+  .modal_container .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40vw;
+    padding: 20px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    border-radius: 30px;
+    background: #f8fff8;
+    box-shadow: 15px 15px 30px #bebebe,
+               -15px -15px 30px #d1d1d1;
+  }
+  
+  dialog {
+    justify-content: center;
+    align-items: center;
+  }
+  
+  dialog [open] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
