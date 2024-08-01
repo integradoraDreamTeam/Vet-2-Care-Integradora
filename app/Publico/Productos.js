@@ -15,7 +15,11 @@ document.addEventListener('DOMContentLoaded',async ()=>{
     const resJson= await res.json();
     const prod=resJson.find(usr=>usr.nombre_producto===nombre)
     console.log(prod)
-    const contenedor=document.getElementById('cont');
+    //Informacion del producto
+    const contenedor=document.getElementById('cont_main');
+        const div_prod=document.createElement('div');
+        div_prod.style='align-items: start; justify-content: start; flex-direction: column; width: 35vw;';
+        div_prod.className='main-product-img';
         const h2=document.createElement('h2');
         h2.innerHTML=prod.nombre_producto;
         const h3=document.createElement('h3');
@@ -31,5 +35,14 @@ document.addEventListener('DOMContentLoaded',async ()=>{
         precioH2.appendChild(h4);
         h3.appendChild(precioH2);
         h2.appendChild(h3);
-        contenedor.appendChild(h2);
+        div_prod.appendChild(h2);
+    //Foto del producto
+        const div_img=document.createElement('div');
+        div_img.className='main-product-img';
+        const img=document.createElement('img');
+        img.src=nombre+'.png';
+        div_img.appendChild(img);
+    //Creacion de todo
+        contenedor.append(div_img);
+        contenedor.append(div_prod);
 });
