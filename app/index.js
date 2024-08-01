@@ -1,6 +1,8 @@
 //Crear el servidor
 import express from 'express';
+import cookieParser from 'cookie-parser';
 import {methods as authentication} from './controllers/authentication.controller.js';
+import {methods as authorization} from './middlewares/authorization.js'
 const server=express();
 server.set("port",4500);
 server.listen(server.get("port"));
@@ -15,10 +17,11 @@ const _dirname = path.dirname(fileURLToPath(import.meta.url));
 server.use(express.static(_dirname+"/Publico"));
 server.use(express.static(_dirname+'/images'))
 server.use(express.json());
+server.use(cookieParser())
 
 // Rutas
-server.get("/",(req,res)=> res.sendFile(_dirname + "/Paginas/Main pre/mainpre.html"))
-server.get("/post",(req,res)=> res.sendFile(_dirname + "/Paginas/Main post/mainpost.html"))
+server.get("/"/*authorization.preLogin*/,(req,res)=> res.sendFile(_dirname + "/Paginas/Main pre/mainpre.html"))
+server.get("/post"/*authorization.postLogin*/,(req,res)=> res.sendFile(_dirname + "/Paginas/Main post/mainpost.html"))
 server.get("/his",(req,res)=> res.sendFile(_dirname + "/Paginas/Main post/historialmedico.html"))
 server.get("/sUp",(req,res)=> res.sendFile(_dirname + "/Paginas/Registro usuario/Registro usuario.html"))
 server.get("/sIn",(req,res)=> res.sendFile(_dirname + "/Paginas/Log in/Login.html"))
@@ -31,10 +34,11 @@ server.get("/registromascotas",(req,res)=> res.sendFile(_dirname + "/Paginas/Reg
 server.post("/api/login",authentication.login)
 server.post("/api/registrer",authentication.registrer)
 server.post("/api/getData",authentication.getData)
+server.post("/api/getPets",authentication.getPets)
  
 //Conexion con la base de datos
 import db from "mysql2";
-const conn=db.createConnection({
+export const conn=db.createConnection({
 host: "localhost",
 user: "root",          // Remplazar con tu nombre de usuario
 password: "root",  // Remplazar con tu contraseña

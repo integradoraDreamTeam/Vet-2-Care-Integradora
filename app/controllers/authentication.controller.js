@@ -1,23 +1,7 @@
 import bcryptjs from 'bcryptjs';
 import jsonwebtoken from 'jsonwebtoken';
 import dotenv from 'dotenv';
-
-import db from "mysql2";
-const conn=db.createConnection({
-host: "localhost",
-user: "root",          // Remplazar con tu nombre de usuario
-password: "root",  // Remplazar con tu contraseña
-database: "vet2care",
-port: 3306,
-});
-
-//Comprobacion
-conn.connect((err)=> {
-    if(err){
-        console.log("Error connection to database", err);
-    }else{
-    console.log("Connected to database");
-}});
+import {conn} from '../index.js'
 
 dotenv.config();
 
@@ -41,7 +25,7 @@ async function login(req,res){
             return res.status(400).send({status:"Error", message:"Hubo un errror pa"})
         }
         const token=jsonwebtoken.sign(
-            {email:usuarioRevisar.email},
+            {email:usuarioRevisar.correo},
             process.env.JWT_SECRET,
             {expiresIn:process.env.JWT_EXPIRATION});
         
@@ -95,8 +79,28 @@ function getData(req,res){
     })
 }
 
+function getPets(req,res){
+    const correo=req.body.email;
+    conn.query("select * from usuarios where correo='"+correo+"';",(err,data)=>{
+        if (err){
+            return res.status(400).send("No se pudo pa")
+        }
+        console.log("es data")
+        const usr=data.find(usr=>usr.correo===correo);
+        const id=usr.id_usuario;
+        conn.query("select * from animales where fk_usuario='"+id+"';",(err,datos)=>{
+            if (err){
+                return res.status(400).send("No se pudo pa")
+            }else{
+                return res.send(datos);
+            }
+        })
+    })
+}
+
 export const methods={
     login,
     registrer,
-    getData
+    getData,
+    getPets
 }
