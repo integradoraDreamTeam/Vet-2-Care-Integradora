@@ -273,40 +273,7 @@
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script>
-    document.getElementById('contact-form').addEventListener('submit', function(event) {
-        event.preventDefault();
-    
-        Swal.fire({
-            title: "¡Tu mensaje ha sido recibido!",
-            text: "Gracias por contactarnos. Revisaremos tu consulta y te responderemos lo antes posible.",
-            icon: "success",
-            customClass: {
-            confirmButton: 'custom-button'
-             }
-        }).then((result) => {
-            if (result.isConfirmed) {
-            }
-        });
-    });
-    </script>
-    
-<script>
-    const swiper = new Swiper('.js-opiniones-slider', {
-        grabCursor: true,
-        spaceBetween: 20,
-        pagination:{
-            el: '.js-opiniones-pagination',
-            clickable: true
-        },
-        loop: true, 
-        breakpoints: {
-            767:{
-                slidesPerView: 2
-            }
-        }
-    });  
-</script>
+
 <script src="mainpre.js"></script>
 
 </body>
