@@ -18,10 +18,14 @@ server.use(express.static(_dirname+"/Publico"));
 server.use(express.static(_dirname+'/images'))
 server.use(express.json());
 server.use(cookieParser())
+// Para que pueda leer datos del lso formulariso 
+server.use(bodyParser.urlencoded({extended: false}))
+server.use(bodyParser.json());
+server.use(cors());
 
 // Rutas
-server.get("/"/*authorization.preLogin*/,(req,res)=> res.sendFile(_dirname + "/Paginas/Main pre/mainpre.html"))
-server.get("/post"/*authorization.postLogin*/,(req,res)=> res.sendFile(_dirname + "/Paginas/Main post/mainpost.html"))
+server.get("/",(req,res)=> res.sendFile(_dirname + "/Paginas/Main pre/mainpre.html"))
+server.get("/post",(req,res)=> res.sendFile(_dirname + "/Paginas/Main post/mainpost.html"))
 server.get("/his",(req,res)=> res.sendFile(_dirname + "/Paginas/Main post/historialmedico.html"))
 server.get("/sUp",(req,res)=> res.sendFile(_dirname + "/Paginas/Registro usuario/Registro usuario.html"))
 server.get("/sIn",(req,res)=> res.sendFile(_dirname + "/Paginas/Log in/Login.html"))
@@ -35,6 +39,8 @@ server.post("/api/login",authentication.login)
 server.post("/api/registrer",authentication.registrer)
 server.post("/api/getData",authentication.getData)
 server.post("/api/getPets",authentication.getPets)
+server.post("/api/revisarCookie",authentication.revisarCookie)
+server.post("/api/getUsr",)
  
 //Conexion con la base de datos
 import db from "mysql2";
@@ -56,16 +62,11 @@ conn.connect((err)=> {
 
 import bodyParser from 'body-parser';
 
-// Para que pueda leer datos del lso formulariso 
-server.use(bodyParser.urlencoded({extended: false}))
-server.use(bodyParser.json());
-server.use(cors());
-
 //Submit en la db
 server.post("/postmascota", (req, res) => {
     const { NombreA, EspecieA, RazaA, EdadA, PesoA, SexoA, DescripcionColorA } = req.body;
 
-    conn.query("SELECT * FROM animales WHERE fk_usuario = 3;", (err, trow) => {
+    conn.query("SELECT * FROM animales WHERE fk_usuario = 17;", (err, trow) => {
         if (err) {
             console.log("Error fetching data", err);
             return res.status(500).send("Error fetching data");
@@ -83,7 +84,7 @@ server.post("/postmascota", (req, res) => {
                 INSERT INTO animales(nombre_animal, especie_a, raza_a, edad, peso_a, sexo_a, info_adicional_a, fk_usuario)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?);
             `;
-            const insertValues = [NombreA, EspecieA, RazaA, EdadA, PesoA, SexoA, DescripcionColorA, 3];
+            const insertValues = [NombreA, EspecieA, RazaA, EdadA, PesoA, SexoA, DescripcionColorA, 17];
 
             conn.query(insertQuery, insertValues, (err, results) => {
                 if (err) {

@@ -18,17 +18,18 @@ async function preLogin(req,res,next){
 }
 
 function revisarCookie(req){
+    console.log(req)
     try{
-        const cookieJWT= req.headers.cookie.split("; ").find(cookie=>cookie.startsWith("jwt=")).slice(4);
+        const cookieJWT= document.cookie.split("; ").find(cookie=>cookie.startsWith("jwt=")).slice(4);
         const deco=jsonwebtoken.verify(cookieJWT,process.env.JWT_SECRET);
         console.log(deco);
         conn.query('select * from usuarios',(err,data)=>{
             const usuarioRevisar=data.find(usuario=>usuario.correo===deco.email);
             console.log(usuarioRevisar)
             if(!usuarioRevisar){
-                return false;
+                return usuarioRevisar;
             }
-            return true
+            return false;
         })
     }catch{
         return false
