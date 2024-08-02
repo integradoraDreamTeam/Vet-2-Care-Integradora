@@ -131,7 +131,7 @@ console.log(req.body);
             return res.status(400).send("Repetido todo");
         } else{const insertQuery = `
                 INSERT INTO animales(nombre_animal, especie_a, raza_a, edad, peso_a, sexo_a, info_adicional_a, fk_usuario)
-                VALUES (?, ?, ?, ?, ?, ?, ?,6);
+                VALUES (?, ?, ?, ?, ?, ?, ?,1);
             `;
             const insertValues = [NombreA, EspecieA, RazaA, EdadA, PesoA, SexoA, DescripcionColorA ];
 
