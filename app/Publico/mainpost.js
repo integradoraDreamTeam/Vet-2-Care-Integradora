@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', async (req)=>{
             })
         })
         const citas= await cit.json();
-        //console.log(citas)
+        console.log(citas)
 
         //Nombre del usuario
         const div_usr_an=document.getElementById('cont usr-anim')
@@ -75,6 +75,9 @@ document.addEventListener('DOMContentLoaded', async (req)=>{
         //console.log(le);
 
         const card_citas=document.getElementById('citas_card');
+
+        const card=document.getElementById('card');
+        
 
         for(let j=0;j<longcit;j++){
             console.log('Si entro cita')
@@ -127,7 +130,6 @@ document.addEventListener('DOMContentLoaded', async (req)=>{
 
         for(let i=0; i<le;i++){
             console.log('si entro ana')
-            const card=document.getElementById('card');
                 const h2=document.createElement('h2');
                 h2.innerHTML=""+(animals[i].nombre_animal)+"";
                 const div_inner=document.createElement('div');       
@@ -167,9 +169,10 @@ document.addEventListener('DOMContentLoaded', async (req)=>{
                     info.innerHTML=""+animals[i].info_adicional_a+""
                 const boton=document.createElement('button');
                 boton.className='btn';
-                boton.innerHTML='Historial medico'
+                boton.innerHTML='Historial medico';
+                boton.onclick='window.location.href="/his?'+animal[i].id_animal+'";';
 
-            desc.appendChild(info);
+            div_data.appendChild(info);
             div_data.appendChild(boton);
             div_data.appendChild(desc);
             //
@@ -195,15 +198,16 @@ document.addEventListener('DOMContentLoaded', async (req)=>{
             card.appendChild(h2);
             card.appendChild(div_inner);
         }
+
         div_pets.appendChild(hed_mas);
         div_pets.appendChild(boton_mascota);
         div_pets.appendChild(card);
+        div_pets.appendChild(hed_cit)
+        div_pets.appendChild(card_citas);
+        div_pets.appendChild(boton_cita);
 
         div_usr_an.appendChild(welcom);
         div_usr_an.appendChild(div_pets);
-        div_usr_an.appendChild(hed_cit);
-        div_usr_an.appendChild(boton_cita);
-        div_usr_an.appendChild(card_citas);
 
         
 
@@ -216,7 +220,3 @@ document.addEventListener('DOMContentLoaded', async (req)=>{
             //window.location.href="/"
     }
 })
-
-function xc(msg){
-    console.log(msg);
-}
