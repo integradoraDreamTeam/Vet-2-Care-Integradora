@@ -72,7 +72,8 @@ document.addEventListener('DOMContentLoaded', async (req)=>{
          // Anadir mascotas
         const longcit=citas.length;
         const le=animals.length;
-        //console.log(le);
+        console.log(le);
+        console.log(longcit)
 
         const card_citas=document.getElementById('citas_card');
 
@@ -100,9 +101,10 @@ document.addEventListener('DOMContentLoaded', async (req)=>{
                         const p_fecha=document.createElement('p');
                         p_fecha.innerHTML=""+citas[j].fecha+""
                         const h3_h=document.createElement('h3');
-                        h3_h.style='color: "#004E71'
+                        h3_h.style='color: #004E71'
                         h3_h.innerHTML='Hora: '
                         const p_hora=document.createElement('p');
+                        p_hora.style='color: #004E71'
                         p_hora.innerHTML=""+citas[j].hora+"";
                     const div_dc=document.createElement('div');
                     div_dc.className='descdata';
@@ -170,11 +172,11 @@ document.addEventListener('DOMContentLoaded', async (req)=>{
                 const boton=document.createElement('button');
                 boton.className='btn';
                 boton.innerHTML='Historial medico';
-                boton.onclick='window.location.href="/his?'+animal[i].id_animal+'";';
-
-            div_data.appendChild(info);
-            div_data.appendChild(boton);
+                boton.onclick='window.location.href="/his?'+animals[i].id_animal+'";';
+            
             div_data.appendChild(desc);
+            div_data.appendChild(boton);
+            div_data.appendChild(info);
             //
             div_right.appendChild(sexoData);
             div_right.appendChild(pesoData);
@@ -203,8 +205,8 @@ document.addEventListener('DOMContentLoaded', async (req)=>{
         div_pets.appendChild(boton_mascota);
         div_pets.appendChild(card);
         div_pets.appendChild(hed_cit)
-        div_pets.appendChild(card_citas);
         div_pets.appendChild(boton_cita);
+        div_pets.appendChild(card_citas);
 
         div_usr_an.appendChild(welcom);
         div_usr_an.appendChild(div_pets);
