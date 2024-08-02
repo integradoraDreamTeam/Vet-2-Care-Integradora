@@ -79,6 +79,7 @@ header {
 
 .header .btn:hover {
   background-color: #7ED957;
+  color: #f8fff8;
 }
 
 .content {
