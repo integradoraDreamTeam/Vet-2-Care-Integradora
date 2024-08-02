@@ -1,9 +1,26 @@
 
-
-//Comprobacion
-
-
 document.addEventListener('DOMContentLoaded',async ()=>{
+
+  try {
+    const cookieJWT= document.cookie.split("; ").find(cookie=>cookie.startsWith("jwt=")).slice(4);
+    //console.log('cookie')
+    //console.log(cookieJWT)
+    const cokDecrypt=await fetch('http://localhost:4500/api/revisarCookie',{
+        method:"POST",
+        headers:{
+            "Content-Type" : "application/json"
+        },
+        body: JSON.stringify({
+            cookie: cookieJWT
+        })})
+      const answer = await cokDecrypt.json();
+  console.log(answer);
+      }
+  catch (error) {
+    console.log(error)
+  }
+ 
+
   const modal = document.getElementById("modal_container");
   const cerrar_modal = document.getElementById("cerrar_alertaa");
     

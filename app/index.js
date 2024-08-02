@@ -39,7 +39,7 @@ server.get("/cita",(req,res)=> res.sendFile(_dirname + "/Paginas/Registro cita/c
 server.get("/e",(req,res)=> res.sendFile(_dirname + "/Paginas/Main pre/mainpre_english.html"))
 server.get("/registromascotas",(req,res)=> res.sendFile(_dirname + "/Paginas/Registro mascota/Registro mascota.html"))
 server.get("/extrinfoanimales", (req,res)=>{
-    conn.query('SELECT nombre_animal, id_animal from animales where fk_usuario = 2;', (err,resu)=>{
+    conn.query('SELECT nombre_animal, id_animal from animales where fk_usuario = 1;', (err,resu)=>{
         if(err){
            console.log(err)}
            if (resu.length === 0) {
@@ -102,7 +102,7 @@ import db from "mysql2";
 export const conn=db.createConnection({
 host: /*process.env.HOST ||*/ "localhost",
 user: /*process.env.USER ||*/  "root",          // Remplazar con tu nombre de usuario
-password: /*process.env.PASSWORD ||*/ "root",  // Remplazar con tu contraseña
+password: /*process.env.PASSWORD ||*/ "juanito1",  // Remplazar con tu contraseña
 database: /*process.env.DATABASE ||*/ "vet2care",
 port: 3306,
 });
