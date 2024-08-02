@@ -35,7 +35,16 @@ server.get("/s",(req,res)=> res.sendFile(_dirname + "/Paginas/Tienda/Productos/P
 server.get("/cita",(req,res)=> res.sendFile(_dirname + "/Paginas/Registro cita/citas.html"))
 server.get("/e",(req,res)=> res.sendFile(_dirname + "/Paginas/Main pre/mainpre_english.html"))
 server.get("/registromascotas",(req,res)=> res.sendFile(_dirname + "/Paginas/Registro mascota/Registro mascota.html"))
-
+server.get("/extrinfoanimales", (req,res)=>{
+    conn.query('SELECT nombre_animal, id_animal from animales where fk_usuario = 2;', (err,resu)=>{
+        if(err){
+           console.log(err)}
+           if (resu.length === 0) {
+            console.log('No se encontraron animales');
+            return res.status(404).send('No se encontraron animales');}
+ res.send(resu)
+    })
+})
 
 
 server.post("/api/login",authentication.login)
