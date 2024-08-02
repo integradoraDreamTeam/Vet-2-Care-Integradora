@@ -30,9 +30,7 @@ document.addEventListener('DOMContentLoaded', async (req)=>{
             return console.log('No se hizo la consulta pa')
         };
         const animals=await an.json();
-        //console.log(animals.length)
-
-        //console.log('Es lo de las citas')
+       
         const cit=await fetch('http://localhost:4500/api/getCitas',{
             method:"POST",
             headers:{
@@ -43,7 +41,7 @@ document.addEventListener('DOMContentLoaded', async (req)=>{
             })
         })
         const citas= await cit.json();
-        //console.log(citas)
+        console.log(citas)
 
         //Nombre del usuario
         const div_usr_an=document.getElementById('cont usr-anim')
@@ -72,9 +70,13 @@ document.addEventListener('DOMContentLoaded', async (req)=>{
          // Anadir mascotas
         const longcit=citas.length;
         const le=animals.length;
-        //console.log(le);
+        console.log(le);
+        console.log(longcit)
 
         const card_citas=document.getElementById('citas_card');
+
+        const card=document.getElementById('card');
+        
 
         for(let j=0;j<longcit;j++){
             console.log('Si entro cita')
@@ -97,9 +99,10 @@ document.addEventListener('DOMContentLoaded', async (req)=>{
                         const p_fecha=document.createElement('p');
                         p_fecha.innerHTML=""+citas[j].fecha+""
                         const h3_h=document.createElement('h3');
-                        h3_h.style='color: "#004E71'
+                        h3_h.style='color: #004E71'
                         h3_h.innerHTML='Hora: '
                         const p_hora=document.createElement('p');
+                        p_hora.style='color: #004E71'
                         p_hora.innerHTML=""+citas[j].hora+"";
                     const div_dc=document.createElement('div');
                     div_dc.className='descdata';
@@ -127,7 +130,6 @@ document.addEventListener('DOMContentLoaded', async (req)=>{
 
         for(let i=0; i<le;i++){
             console.log('si entro ana')
-            const card=document.getElementById('card');
                 const h2=document.createElement('h2');
                 h2.innerHTML=""+(animals[i].nombre_animal)+"";
                 const div_inner=document.createElement('div');       
@@ -167,11 +169,16 @@ document.addEventListener('DOMContentLoaded', async (req)=>{
                     info.innerHTML=""+animals[i].info_adicional_a+""
                 const boton=document.createElement('button');
                 boton.className='btn';
-                boton.innerHTML='Historial medico'
-
-            desc.appendChild(info);
-            div_data.appendChild(boton);
+                boton.innerHTML='Historial medico';
+                const pod=animals[i].id_animal;
+                console.log(pod)
+                boton.onclick=function(){
+                    window.location.href='/his?id='+pod;
+                }
+            
             div_data.appendChild(desc);
+            div_data.appendChild(boton);
+            div_data.appendChild(info);
             //
             div_right.appendChild(sexoData);
             div_right.appendChild(pesoData);
@@ -195,21 +202,16 @@ document.addEventListener('DOMContentLoaded', async (req)=>{
             card.appendChild(h2);
             card.appendChild(div_inner);
         }
+
         div_pets.appendChild(hed_mas);
         div_pets.appendChild(boton_mascota);
         div_pets.appendChild(card);
+        div_pets.appendChild(hed_cit)
+        div_pets.appendChild(boton_cita);
+        div_pets.appendChild(card_citas);
 
         div_usr_an.appendChild(welcom);
         div_usr_an.appendChild(div_pets);
-        div_usr_an.appendChild(hed_cit);
-        div_usr_an.appendChild(boton_cita);
-        div_usr_an.appendChild(card_citas);
-
-        
-
-        //console.log(longcit);
-
-        
 
     }catch(err){
         console.log(err)
@@ -217,6 +219,3 @@ document.addEventListener('DOMContentLoaded', async (req)=>{
     }
 })
 
-function xc(msg){
-    console.log(msg);
-}

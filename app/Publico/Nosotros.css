@@ -1,4 +1,24 @@
-header {
+h1 {
+    font-family: "Inter", sans-serif;
+    color: #314E23;
+    margin: 5.55vw;
+  }
+  
+  h2 {
+    font-family: "Inter", sans-serif;
+    color: #314E23;
+    font-size: 20px;
+    margin-bottom: 1px;
+  }
+  
+  h3 {
+    font-family: "Inter", sans-serif;
+    color: #828282;
+    font-size: 12px;
+    margin-bottom: 1px;
+  }
+  
+  header {
     position: fixed;
     background-color: #314E23;
     width: 100vw;
@@ -61,8 +81,8 @@ header {
     background-color: #7ED957;
     color: #f8fff8;
   }
-
-.content {
+  
+  .content {
     width: 100vw;
     height: 100vh;
     margin: auto;
@@ -70,65 +90,91 @@ header {
     z-index: 2;
     text-align: center;
     padding-top: 100px;
-}
-
-.toy-container {
-    width: 25vw;
-    height: 270px;
+  }
+  
+  .image-container {
+    position: relative;
+    display: inline-block;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-left: 5.55vw;
+  }
+  
+  .image-container img {
+    display: block;
+    width: 88.90429958vw;
+    height: 597px;
+  }
+  
+  .image-container .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .text-overlay {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 2; /* Asegura que el texto y el botón estén sobre la superposición */
+  }
+  
+  .text-overlay h2 {
+    margin: 0px;
+    font-size: 50px;
+    font-family: "Inter", sans-serif;
+    color: #f8fff8;
+  }
+  
+  .text-overlay p {
+    margin-top: 10px;
+    font-size: 25px;
+    font-family: "Montserrat", sans-serif;
+    color: #f8fff8;
+  }
+  
+  .text-overlay a {
+    text-decoration: none;
+    color: #f8fff8;
+  }
+  .text-overlay .btn {
+    width: 13.86962552vw;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 18px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #314E23;
+    color: #f8fff8;
+    transition: background-color 0.5s, color 0.5s;
+    cursor: pointer;
+  }
+  
+  .text-overlay .btn:hover {
+    background-color: #7ED957;
+    color: #fff;
+  }
+  
+  .toy-container {
+    width: 28.01664355vw;
+    height: 382px;
     display: flex;
     flex-direction: column;
   }
-
-.toys-container {
-    width: 88.90429958vw;
-    height: 270px;
-    margin-left: 5.55vw;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-.toy-container h2{
-    font-family: "Inter", sans-serif;
-    font-size: 15px;
-    color: #314E23;
-    margin-bottom: 1px;
-}
-
-.toy-container h3 {
-    font-family: "Inter", sans-serif;
-    color: #828282;
-    font-size: 10px;
-    margin-bottom: 1px;
-}
-
-.toy-img {
-    width: 25vw;
-    height: 180px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.toy-img img {
-    max-width: 100%;
-    max-height: 100%;
-}
-
-.main-product{
-    width: 88.90429958vw;
-    height: 450px;
-    margin-left: 5.55vw;
-    margin-top: 20px;
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-}
-
-.main-product .btn {
-    width: 35vw;
-    height: 50px;
+  .btn {
+    width: 10vw;
+    height: 30px;
     border-radius: 10px;
     font-size: 18px;
     border: none;
@@ -139,27 +185,16 @@ header {
     color: #f8fff8;
     transition: background-color 0.5s, color 0.5s;
     cursor: pointer;
-}
-
-.main-product .btn:hover {
+  }
+  
+  .btn:hover {
     background-color: #7ED957;
     color: #fff;
-}
-
-.main-product-img {
-    width: 44vw;
-    height: 450px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.main-product-img img {
-    max-width: 100%;
-    max-height: 100%;
-}
-
-.footer {
+  }
+  
+  
+  
+  .footer {
     margin-top: 50px;
     height: 200px;
     display: flex;
@@ -213,29 +248,3 @@ header {
   .social-icons img{
     width: 2.8vw;
   }
-
-h1 {
-    font-family: "Inter", sans-serif;
-    color: #314E23;
-    margin: 5.55vw;
-}
-
-h2 {
-    font-family: "Inter", sans-serif;
-    color: #314E23;
-    font-size: 20px;
-}
-
-h3 {
-    font-family: "Inter", sans-serif;
-    color: #828282;
-    font-size: 12px;
-    margin-bottom: 1px;
-}
-
-h4 {
-    font-family: "Inter", sans-serif;
-    color: #828282;
-    font-size: 10px;
-    margin-bottom: 40px;
-}

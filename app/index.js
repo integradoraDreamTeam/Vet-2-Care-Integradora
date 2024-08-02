@@ -28,6 +28,7 @@ server.use(cors());
 
 // Rutas
 server.get("/",(req,res)=> res.sendFile(_dirname + "/Paginas/Main pre/mainpre.html"))
+server.get("/us",(req,res)=> res.sendFile(_dirname + "/Paginas/Nosotros/Nosotros.html"))
 server.get("/post",(req,res)=> res.sendFile(_dirname + "/Paginas/Main post/mainpost.html"))
 server.get("/his",(req,res)=> res.sendFile(_dirname + "/Paginas/Main post/historialmedico.html"))
 server.get("/sUp",(req,res)=> res.sendFile(_dirname + "/Paginas/Registro usuario/Registro usuario.html"))
@@ -60,6 +61,8 @@ server.post("/api/getData",authentication.getData)
 server.post("/api/getPets",authentication.getPets)
 server.post("/api/revisarCookie",authentication.revisarCookie)
 server.post("/api/getCitas",authentication.getCitas)
+server.post("/api/getHistorial",authentication.getHistorial)
+server.post("/api/getAnimal",authentication.getAnimal)
 server.post("/llegafecha", (req, res) => {
     const checarfecha = req.body.fecha;
     

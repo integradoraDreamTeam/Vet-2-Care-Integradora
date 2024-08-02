@@ -2,7 +2,6 @@ import bcryptjs from 'bcryptjs';
 import jsonwebtoken from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import {conn} from '../index.js'
-import { func } from 'promisify';
 
 dotenv.config();
 
@@ -126,11 +125,37 @@ function getCitas(req,res){
     })
 }
 
+function getHistorial(req,res){
+    const id=req.body.id;
+    conn.query('select * from citas where fk_animal="'+id+'";',(err,data)=>{
+        if(err){
+            return console.log(err);
+        }else{
+            console.log(data)
+            return res.send(data);
+        }
+    })
+}
+
+function getAnimal(req,res){
+    const id=req.body.id;
+    conn.query('select * from animales where id_animal="'+id+'";',(err,data)=>{
+        if(err){
+            return console.log(err);
+        }else{
+            //console.log(data)
+            return res.send(data);
+        }
+    })
+}
+
 export const methods={
     login,
     registrer,
     getData,
     getPets,
     getCitas,
-    revisarCookie
+    revisarCookie,
+    getHistorial,
+    getAnimal
 }
