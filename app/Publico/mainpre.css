@@ -240,6 +240,11 @@ video {
     color: #333;
     line-height: 1.2;
 }
+.tittle3 {
+    color: #283629;
+    font-size: 36px;
+    
+}
 
 .opiniones-content {
     width: 1200px;
@@ -387,11 +392,11 @@ video {
 
 
 
-/CONTACTO/
+/*CONTACTO*/
 .contact {
     display: flex;
     justify-content: space-between;
-    margin: 20px;
+    align-items: flex-start; 
     width: 100%;
 }
 
@@ -402,11 +407,16 @@ video {
 }
 
 .informacion-vet {
-        width: 45%; 
-        margin-left: 0px; 
-        margin-top: 100px; 
-    }
-    
+    width: 466px;
+    padding: 20px; 
+    margin: 20px 20px 20px 40px;
+}
+.sobre-info-vet {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    width: 100%;
+}
 
 .contact h2 {
     color: #283629;
@@ -482,3 +492,4 @@ input::placeholder, textarea::placeholder {
     color: #efefef; 
     border: none; 
 }
+
