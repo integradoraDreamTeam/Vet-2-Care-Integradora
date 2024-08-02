@@ -74,7 +74,7 @@ server.post("/postcitasmascota",(req,res)=>{
 
  const insertQuery = `
  INSERT INTO citas (fk_animal, fk_usuario, fecha, hora, motivo_cita) VALUES
- (?, 6, ?, ?, ?)`;
+ (?, 1, ?, ?, ?)`;
  const valorescitas= [MascotaA ,fechaRC, horaRcita, Motivo]; //Insertar id_usuario
 
  conn.query(insertQuery, valorescitas, (err,result)=> {
@@ -96,7 +96,7 @@ import db from "mysql2";
 export const conn=db.createConnection({
 host: /*process.env.HOST ||*/ "localhost",
 user: /*process.env.USER ||*/  "root",          // Remplazar con tu nombre de usuario
-password: /*process.env.PASSWORD ||*/ "root",  // Remplazar con tu contraseña
+password: /*process.env.PASSWORD ||*/ "juanito1",  // Remplazar con tu contraseña
 database: /*process.env.DATABASE ||*/ "vet2care",
 port: 3306,
 });
