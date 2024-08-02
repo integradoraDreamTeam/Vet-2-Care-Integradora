@@ -26,7 +26,7 @@ server.get("/s",(req,res)=> res.sendFile(_dirname + "/Paginas/Tienda/Productos/P
 server.get("/e",(req,res)=> res.sendFile(_dirname + "/Paginas/Main pre/mainpre_english.html"))
 server.get("/cita",(req,res)=> res.sendFile(_dirname + "/Paginas/Registro citas/citas.html"))
 server.get("/registromascotas",(req,res)=> res.sendFile(_dirname + "/Paginas/Registro mascota/Registro mascota.html"))
-server.get("/extrinfoanimales", (req,res)=>{
+/*server.get("/extrinfoanimales", (req,res)=>{
     conn.query('SELECT nombre_animal, id_animal from animales where fk_usuario = 2;', (err,resu)=>{
         if(err){
            console.log(err)}
@@ -35,7 +35,7 @@ server.get("/extrinfoanimales", (req,res)=>{
             return res.status(404).send('No se encontraron animales');}
  res.send(resu)
     })
-})
+})*/
 
 
 
@@ -46,7 +46,7 @@ server.post("/api/getData",authentication.getData)
 
 
 
-
+/*
 let resultadohorasCitas = {};
 
 server.post("/llegafecha", (req, res) => {
@@ -66,7 +66,7 @@ server.post("/llegafecha", (req, res) => {
 server.get("/horasdisponibles", (req, res) => {
     res.json(resultadohorasCitas);
 });
- 
+ */
 //Conexion con la base de datos
 import db from "mysql2";
 const conn=db.createConnection({
@@ -129,6 +129,7 @@ server.post("/postmascota", (req, res) => {
     });
 });
 
+/*
 server.post("/postcitasmascota",(req,res)=>{
     console.log(req.body)
  const { MascotaA, fechaRC, horaRcita, Motivo} = req.body;
@@ -148,4 +149,4 @@ server.post("/postcitasmascota",(req,res)=>{
     return res.redirect("/"); // Poner bien la redirect
 }
  })
-})
+})*/
