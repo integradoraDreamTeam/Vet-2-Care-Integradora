@@ -170,7 +170,11 @@ document.addEventListener('DOMContentLoaded', async (req)=>{
                 const boton=document.createElement('button');
                 boton.className='btn';
                 boton.innerHTML='Historial medico';
-                boton.onclick='window.location.href="/his?'+animals[i].id_animal+'";';
+                const pod=animals[i].id_animal;
+                console.log(pod)
+                boton.onclick=function(){
+                    window.location.href='/his?id='+pod;
+                }
             
             div_data.appendChild(desc);
             div_data.appendChild(boton);
@@ -214,3 +218,4 @@ document.addEventListener('DOMContentLoaded', async (req)=>{
             //window.location.href="/"
     }
 })
+
