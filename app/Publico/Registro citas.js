@@ -57,26 +57,20 @@ const cerrar_dialog=document.getElementById("cerrar_alertaa")
       } else {
           console.log('Datos recibidos:', data);
       }
-    }catch (error) {
+      // Se insertan en las opciones del form, los animales disponibles
+      const formCita = document.getElementById('MascotaA');
+      data.forEach(breed => {
+          const opcion = document.createElement("option");
+          opcion.value = breed.id_animal;
+          opcion.textContent = breed.nombre_animal;
+          formCita.appendChild(opcion);
+    })
+  }catch (error) {
     console.log(error)
   }
  
 
   const modal = document.getElementById("modal_container");
-  
-    
-  try {
-        // Se insertan en las opciones del form, los animales disponibles
-        const formCita = document.getElementById('MascotaA');
-        data.forEach(breed => {
-            const opcion = document.createElement("option");
-            opcion.value = breed.id_animal;
-            opcion.textContent = breed.nombre_animal;
-            formCita.appendChild(opcion);
-        });
-    }catch (error) {
-    console.error('Hubo un problema con la solicitud fetch:', error);
-}
 
     const fechaT=document.getElementById('fechaRcita');
 
