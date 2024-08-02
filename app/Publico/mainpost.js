@@ -204,10 +204,10 @@ document.addEventListener('DOMContentLoaded', async (req)=>{
         }
 
         div_pets.appendChild(hed_mas);
-        div_pets.appendChild(boton_mascota);
+        //div_pets.appendChild(boton_mascota);
         div_pets.appendChild(card);
         div_pets.appendChild(hed_cit)
-        div_pets.appendChild(boton_cita);
+        //div_pets.appendChild(boton_cita);
         div_pets.appendChild(card_citas);
 
         div_usr_an.appendChild(welcom);
