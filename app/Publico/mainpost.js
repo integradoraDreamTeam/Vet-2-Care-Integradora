@@ -57,15 +57,76 @@ document.addEventListener('DOMContentLoaded', async (req)=>{
         const hed_mas=document.createElement('h1');
         hed_mas.innerHTML='Tus mascotas'
 
+        const hed_cit=document.createElement('h1')
+        hed_cit.innerHTML='Tus citas';
+        hed_cit.style='color: #004E71';
+
+        const boton_cita=document.createElement('button');
+        boton_cita.className="btn2";
+        boton_cita.innerHTML='Agendar cita'
+
         const boton_mascota=document.createElement('button');
         boton_mascota.className='btn';
         boton_mascota.innerHTML='Agregar mascota'
 
          // Anadir mascotas
+        const longcit=citas.length;
         const le=animals.length;
         //console.log(le);
 
-        for(let i=0; i<=le;i++){
+        const card_citas=document.getElementById('citas_card');
+
+        for(let j=0;j<longcit;j++){
+            console.log('Si entro cita')
+            const xd=citas[j].fk_animal
+            const anima=animals.find(an=>an.id_animal===xd)
+            console.log(anima)
+                const div_icard=document.createElement('div');
+                div_icard.className='innercard';
+                    const div_pc=document.createElement('div');
+                    div_pc.className='primarydata';
+                    div_pc.style='flex-direction: column; height: auto;';
+                        const h3_n=document.createElement('h3');
+                        h3_n.style='color: #004E71';
+                        h3_n.innerHTML='Mascota: ';
+                        const p_mascota=document.createElement('p');
+                        p_mascota.innerHTML=anima.nombre_animal;
+                        const h3_f=document.createElement('h3');
+                        h3_f.style='color: #004E71';
+                        h3_f.innerHTML='Fecha: '
+                        const p_fecha=document.createElement('p');
+                        p_fecha.innerHTML=""+citas[j].fecha+""
+                        const h3_h=document.createElement('h3');
+                        h3_h.style='color: "#004E71'
+                        h3_h.innerHTML='Hora: '
+                        const p_hora=document.createElement('p');
+                        p_hora.innerHTML=""+citas[j].hora+"";
+                    const div_dc=document.createElement('div');
+                    div_dc.className='descdata';
+                        const h3_desc=document.createElement('h3')
+                        h3_desc.style='color: #004E71';
+                        h3_desc.innerHTML='Motivo: ';
+                        const para=document.createElement('p');
+                        para.innerHTML=""+citas[j].motivo_cita;
+                    div_dc.appendChild(h3_desc);
+                    div_dc.appendChild(para);
+                    //
+                    div_pc.appendChild(h3_n);
+                    div_pc.appendChild(p_mascota);
+                    div_pc.appendChild(h3_f);
+                    div_pc.appendChild(p_fecha)
+                    div_pc.appendChild(h3_h)
+                    div_pc.appendChild(p_hora)
+                    //
+                    div_icard.appendChild(div_pc);
+                    div_icard.appendChild(div_dc);
+                    //
+                    card_citas.appendChild(div_icard)
+                    
+        }
+
+        for(let i=0; i<le;i++){
+            console.log('si entro ana')
             const card=document.getElementById('card');
                 const h2=document.createElement('h2');
                 h2.innerHTML=""+(animals[i].nombre_animal)+"";
@@ -107,6 +168,7 @@ document.addEventListener('DOMContentLoaded', async (req)=>{
                 const boton=document.createElement('button');
                 boton.className='btn';
                 boton.innerHTML='Historial medico'
+
             desc.appendChild(info);
             div_data.appendChild(boton);
             div_data.appendChild(desc);
@@ -139,28 +201,15 @@ document.addEventListener('DOMContentLoaded', async (req)=>{
 
         div_usr_an.appendChild(welcom);
         div_usr_an.appendChild(div_pets);
+        div_usr_an.appendChild(hed_cit);
+        div_usr_an.appendChild(boton_cita);
+        div_usr_an.appendChild(card_citas);
 
-        const longcit=citas.length;
+        
 
-        console.log(longcit);
+        //console.log(longcit);
 
-        for(let j=0;j<=longcit;j++){
-            //console.log('Si entro')
-            const xd=animals[j].id_animal
-            const anima=citas.find(an=>an.fk_animal===xd)
-            console.log(anima)
-            const card=document.getElementById('citas_card');
-                const div_icard=document.createElement('div');
-                div_icard.className='innercard';
-                    const div_pc=document.createElement('div');
-                    div_pc.className='primarydata';
-                    div_pc.style='flex-direction: column; height: auto;';
-                        const h3=document.createElement('h3');
-                        h3.style='color: #004E71';
-                        h3.innerHTML='Mascota: ';
-                        const p_mascota=document.createElement('p');
-                        //p_mascota.innerHTML=
-        }
+        
 
     }catch(err){
         console.log(err)
