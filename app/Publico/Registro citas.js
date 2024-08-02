@@ -1,6 +1,24 @@
 
 document.addEventListener('DOMContentLoaded',async ()=>{
 
+
+const cerrar_dialog=document.getElementById("cerrar_alertaa")
+
+    cerrar_dialog.addEventListener("click", () => {
+      
+      modal.close(); // Asegúrate de que el método es correcto para cerrar el diálogo
+      window.location.href = '/registromascotas';
+
+      
+    });
+    
+     function abrir_alertaM() {
+        if (modal) {
+            modal.showModal();
+        }
+    }
+
+
   try {
     const cookieJWT= document.cookie.split("; ").find(cookie=>cookie.startsWith("jwt=")).slice(4);
     //console.log('cookie')
@@ -25,13 +43,13 @@ document.addEventListener('DOMContentLoaded',async ()=>{
  
 
   const modal = document.getElementById("modal_container");
-  const cerrar_modal = document.getElementById("cerrar_alertaa");
+  
     
   try {
     const response = await fetch('/extrinfoanimales');
     if (!response.ok) {
         if (response.status === 404) {
-          abrir_alertaM();
+         abrir_alertaM();
         } else {
             console.error('Error en la solicitud:', response.statusText);
         }
@@ -94,15 +112,5 @@ document.addEventListener('DOMContentLoaded',async ()=>{
     })
     
     
-    cerrar_modal.addEventListener('click', () => {
-      window.location.href = ("/");
-      console.log(kk)
-    });
-    
-     function abrir_alertaM() {
-        if (modal) {
-            modal.showModal();
-        }
-    }
 
 })
