@@ -1,7 +1,6 @@
 h1 {
     font-family: "Inter", sans-serif;
     color: #314E23;
-    margin: 5.55vw;
   }
   
   h2 {
@@ -14,7 +13,14 @@ h1 {
   h3 {
     font-family: "Inter", sans-serif;
     color: #828282;
-    font-size: 12px;
+    font-size: 15px;
+    margin-bottom: 1px;
+  }
+
+  p {
+    font-family: "Inter", sans-serif;
+    color: #828282;
+    font-size: 15px;
     margin-bottom: 1px;
   }
   
@@ -92,18 +98,42 @@ h1 {
     padding-top: 100px;
   }
   
+  .all {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .izq {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 40vw;
+    margin-left: 5vw;
+  }
+
+  .der {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 40vw;
+    margin-left: 5vw;
+  }
+
   .image-container {
     position: relative;
     display: inline-block;
     border-radius: 20px;
     overflow: hidden;
-    margin-left: 5.55vw;
   }
   
   .image-container img {
     display: block;
-    width: 88.90429958vw;
-    height: 597px;
+    width: 40vw;
+    height: 375px;
   }
   
   .image-container .overlay {
@@ -141,59 +171,7 @@ h1 {
     font-family: "Montserrat", sans-serif;
     color: #f8fff8;
   }
-  
-  .text-overlay a {
-    text-decoration: none;
-    color: #f8fff8;
-  }
-  .text-overlay .btn {
-    width: 13.86962552vw;
-    height: 50px;
-    border-radius: 10px;
-    font-size: 18px;
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #314E23;
-    color: #f8fff8;
-    transition: background-color 0.5s, color 0.5s;
-    cursor: pointer;
-  }
-  
-  .text-overlay .btn:hover {
-    background-color: #7ED957;
-    color: #fff;
-  }
-  
-  .toy-container {
-    width: 28.01664355vw;
-    height: 382px;
-    display: flex;
-    flex-direction: column;
-  }
-  .btn {
-    width: 10vw;
-    height: 30px;
-    border-radius: 10px;
-    font-size: 18px;
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #004E71;
-    color: #f8fff8;
-    transition: background-color 0.5s, color 0.5s;
-    cursor: pointer;
-  }
-  
-  .btn:hover {
-    background-color: #7ED957;
-    color: #fff;
-  }
-  
-  
-  
+
   .footer {
     margin-top: 50px;
     height: 200px;
