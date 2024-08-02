@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', async (req)=>{
         const animals=await an.json();
         //console.log(animals.length)
 
-        console.log('Es lo de las citas')
+        //console.log('Es lo de las citas')
         const cit=await fetch('http://localhost:4500/api/getCitas',{
             method:"POST",
             headers:{
@@ -42,7 +42,8 @@ document.addEventListener('DOMContentLoaded', async (req)=>{
                 id:res.id_usuario
             })
         })
-        console.log(cit)
+        const citas= await cit.json();
+        //console.log(citas)
 
         //Nombre del usuario
         const div_usr_an=document.getElementById('cont usr-anim')
@@ -62,7 +63,7 @@ document.addEventListener('DOMContentLoaded', async (req)=>{
 
          // Anadir mascotas
         const le=animals.length;
-        console.log
+        //console.log(le);
 
         for(let i=0; i<=le;i++){
             const card=document.getElementById('card');
@@ -116,21 +117,21 @@ document.addEventListener('DOMContentLoaded', async (req)=>{
             div_right.appendChild(razadata);
             div_right.appendChild(animaldata);
             //
-             div_left.appendChild(sexo);
-             div_left.appendChild(peso);
-             div_left.appendChild(edad);
-             div_left.appendChild(raza);
-             div_left.appendChild(animal);
-             //
-             div_primary.appendChild(div_left);
-             div_primary.appendChild(div_right);
-             //
-             div_inner.appendChild(div_primary);
-             div_inner.appendChild(div_data);
-             div_inner.appendChild(boton);
-             //
-             card.appendChild(h2);
-             card.appendChild(div_inner);
+            div_left.appendChild(sexo);
+            div_left.appendChild(peso);
+            div_left.appendChild(edad);
+            div_left.appendChild(raza);
+            div_left.appendChild(animal);
+            //
+            div_primary.appendChild(div_left);
+            div_primary.appendChild(div_right);
+            //
+            div_inner.appendChild(div_primary);
+            div_inner.appendChild(div_data);
+            div_inner.appendChild(boton);
+            //
+            card.appendChild(h2);
+            card.appendChild(div_inner);
         }
         div_pets.appendChild(hed_mas);
         div_pets.appendChild(boton_mascota);
@@ -139,9 +140,34 @@ document.addEventListener('DOMContentLoaded', async (req)=>{
         div_usr_an.appendChild(welcom);
         div_usr_an.appendChild(div_pets);
 
+        const longcit=citas.length;
+
+        console.log(longcit);
+
+        for(let j=0;j<=longcit;j++){
+            //console.log('Si entro')
+            const xd=animals[j].id_animal
+            const anima=citas.find(an=>an.fk_animal===xd)
+            console.log(anima)
+            const card=document.getElementById('citas_card');
+                const div_icard=document.createElement('div');
+                div_icard.className='innercard';
+                    const div_pc=document.createElement('div');
+                    div_pc.className='primarydata';
+                    div_pc.style='flex-direction: column; height: auto;';
+                        const h3=document.createElement('h3');
+                        h3.style='color: #004E71';
+                        h3.innerHTML='Mascota: ';
+                        const p_mascota=document.createElement('p');
+                        //p_mascota.innerHTML=
+        }
 
     }catch(err){
         console.log(err)
             //window.location.href="/"
     }
 })
+
+function xc(msg){
+    console.log(msg);
+}

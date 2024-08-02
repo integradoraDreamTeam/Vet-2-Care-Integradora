@@ -100,7 +100,7 @@ function getPets(req,res){
 }
 
 function revisarCookie(req,res){
-    console.log('Si entro')
+    //console.log('Si entro')
     const deco=jsonwebtoken.verify(req.body.cookie,process.env.JWT_SECRET);
     //console.log(deco);
     conn.query('select * from usuarios',(err,data)=>{
@@ -115,12 +115,12 @@ function revisarCookie(req,res){
 }    
 
 function getCitas(req,res){
-    console.log(req)
+    //console.log(req)
     conn.query('select * from citas where fk_usuario='+req.body.id+';',(err,dates)=>{
         if(err){
             res.status(400).send('No se pudo la cita')
         }else{
-            console.log(dates)
+            //console.log(dates)
             return res.send(dates);
         }
     })
