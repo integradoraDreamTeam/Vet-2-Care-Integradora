@@ -62,6 +62,7 @@ server.post("/api/getPets",authentication.getPets)
 server.post("/api/revisarCookie",authentication.revisarCookie)
 server.post("/api/getCitas",authentication.getCitas)
 server.post("/api/getHistorial",authentication.getHistorial)
+server.post("/api/getAnimal",authentication.getAnimal)
 server.post("/llegafecha", (req, res) => {
     const checarfecha = req.body.fecha;
     
