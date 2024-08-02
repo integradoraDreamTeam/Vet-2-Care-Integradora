@@ -23,7 +23,7 @@ const cerrar_dialog=document.getElementById("cerrar_alertaa")
     const cookieJWT= document.cookie.split("; ").find(cookie=>cookie.startsWith("jwt=")).slice(4);
     //console.log('cookie')
     console.log(cookieJWT)
-    const cokDecrypt=await fetch('http://localhost:4500/api/revisarCookie',{
+    const cokDecrypt=await fetch('https://vet-2-care-integradora.onrender.com/api/revisarCookie',{
         method:"POST",
         headers:{
             "Content-Type" : "application/json"
@@ -37,7 +37,7 @@ const cerrar_dialog=document.getElementById("cerrar_alertaa")
       console.log('ans')
       console.log(answer.id_usuario);
 
-      const response = await fetch('http://localhost:4500/api/extrinfoanimales',{
+      const response = await fetch('https://vet-2-care-integradora.onrender.com/api/extrinfoanimales',{
         method:"POST",
           headers:{
               "Content-Type" : "application/json"
@@ -78,7 +78,7 @@ const cerrar_dialog=document.getElementById("cerrar_alertaa")
     fechaT.addEventListener('change', (event) => {
       const fechaTent={fecha: event.target.value};
       
-      fetch('http://localhost:4500/llegafecha', {
+      fetch('https://vet-2-care-integradora.onrender.com/llegafecha', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
