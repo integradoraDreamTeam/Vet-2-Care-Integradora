@@ -30,9 +30,7 @@ document.addEventListener('DOMContentLoaded', async (req)=>{
             return console.log('No se hizo la consulta pa')
         };
         const animals=await an.json();
-        //console.log(animals.length)
-
-        //console.log('Es lo de las citas')
+       
         const cit=await fetch('http://localhost:4500/api/getCitas',{
             method:"POST",
             headers:{
@@ -210,12 +208,6 @@ document.addEventListener('DOMContentLoaded', async (req)=>{
 
         div_usr_an.appendChild(welcom);
         div_usr_an.appendChild(div_pets);
-
-        
-
-        //console.log(longcit);
-
-        
 
     }catch(err){
         console.log(err)
