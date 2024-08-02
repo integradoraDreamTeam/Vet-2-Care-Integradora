@@ -40,7 +40,7 @@ server.post("/api/registrer",authentication.registrer)
 server.post("/api/getData",authentication.getData)
 server.post("/api/getPets",authentication.getPets)
 server.post("/api/revisarCookie",authentication.revisarCookie)
-server.post("/api/getUsr",)
+server.post("/api/getCitas",authentication.getCitas)
  
 //Conexion con la base de datos
 import db from "mysql2";

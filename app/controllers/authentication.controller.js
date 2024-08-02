@@ -86,7 +86,7 @@ function getPets(req,res){
         if (err){
             return res.status(400).send("No se pudo pa")
         }
-        console.log("es data")
+        //console.log("es data")
         const usr=data.find(usr=>usr.correo===correo);
         const id=usr.id_usuario;
         conn.query("select * from animales where fk_usuario='"+id+"';",(err,datos)=>{
@@ -102,10 +102,10 @@ function getPets(req,res){
 function revisarCookie(req,res){
     console.log('Si entro')
     const deco=jsonwebtoken.verify(req.body.cookie,process.env.JWT_SECRET);
-    console.log(deco);
+    //console.log(deco);
     conn.query('select * from usuarios',(err,data)=>{
         const usuarioRevisar=data.find(usuario=>usuario.correo===deco.email);
-        console.log(usuarioRevisar)
+        //console.log(usuarioRevisar)
         if(usuarioRevisar){
             return res.send(usuarioRevisar);
         }else{
@@ -114,10 +114,23 @@ function revisarCookie(req,res){
     })
 }    
 
+function getCitas(req,res){
+    console.log(req)
+    conn.query('select * from citas where fk_usuario='+req.body.id+';',(err,dates)=>{
+        if(err){
+            res.status(400).send('No se pudo la cita')
+        }else{
+            console.log(dates)
+            return res.send(dates);
+        }
+    })
+}
+
 export const methods={
     login,
     registrer,
     getData,
     getPets,
+    getCitas,
     revisarCookie
 }

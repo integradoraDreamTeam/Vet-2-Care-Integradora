@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', async (req)=>{
     try{
         const cookieJWT= document.cookie.split("; ").find(cookie=>cookie.startsWith("jwt=")).slice(4);
-        console.log('cookie')
-        console.log(cookieJWT)
+        //console.log('cookie')
+        //console.log(cookieJWT)
         const cokDecrypt=await fetch('http://localhost:4500/api/revisarCookie',{
             method:"POST",
             headers:{
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', async (req)=>{
             window.location.href="/"
         };
         const res=await cokDecrypt.json();
-        console.log(res.nombre_usuario) 
+        //console.log(res.nombre_usuario) 
         const an= await fetch('http://localhost:4500/api/getPets',{
             method:"POST",
             headers:{
@@ -30,11 +30,19 @@ document.addEventListener('DOMContentLoaded', async (req)=>{
             return console.log('No se hizo la consulta pa')
         };
         const animals=await an.json();
-        console.log(animals.length)
+        //console.log(animals.length)
 
+        console.log('Es lo de las citas')
         const cit=await fetch('http://localhost:4500/api/getCitas',{
-            
+            method:"POST",
+            headers:{
+                "Content-Type" : "application/json"
+            },
+            body: JSON.stringify({
+                id:res.id_usuario
+            })
         })
+        console.log(cit)
 
         //Nombre del usuario
         const div_usr_an=document.getElementById('cont usr-anim')
