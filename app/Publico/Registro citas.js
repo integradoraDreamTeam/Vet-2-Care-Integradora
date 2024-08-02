@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded',async ()=>{
   try {
     const cookieJWT= document.cookie.split("; ").find(cookie=>cookie.startsWith("jwt=")).slice(4);
     //console.log('cookie')
-    //console.log(cookieJWT)
+    console.log(cookieJWT)
     const cokDecrypt=await fetch('http://localhost:4500/api/revisarCookie',{
         method:"POST",
         headers:{
@@ -12,9 +12,12 @@ document.addEventListener('DOMContentLoaded',async ()=>{
         },
         body: JSON.stringify({
             cookie: cookieJWT
-        })})
+        })
+      })
+      console.log(cokDecrypt)
       const answer = await cokDecrypt.json();
-  console.log(answer);
+      console.log('ans')
+    console.log(answer);
       }
   catch (error) {
     console.log(error)

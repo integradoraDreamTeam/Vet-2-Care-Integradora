@@ -102,7 +102,7 @@ import db from "mysql2";
 export const conn=db.createConnection({
 host: /*process.env.HOST ||*/ "localhost",
 user: /*process.env.USER ||*/  "root",          // Remplazar con tu nombre de usuario
-password: /*process.env.PASSWORD ||*/ "juanito1",  // Remplazar con tu contraseña
+password: /*process.env.PASSWORD ||*/ "root",  // Remplazar con tu contraseña
 database: /*process.env.DATABASE ||*/ "vet2care",
 port: 3306,
 });
