@@ -15,6 +15,31 @@ let resultadohorasCitas = {};
 import path from 'path';
 import {fileURLToPath} from 'url';
 const _dirname = path.dirname(fileURLToPath(import.meta.url));
+let id_us;
+try {
+    const cookieJWT= document.cookie.split("; ").find(cookie=>cookie.startsWith("jwt=")).slice(4);
+    //console.log('cookie')
+    console.log(cookieJWT)
+    const cokDecrypt=await fetch('http://localhost:4500/api/revisarCookie',{
+        method:"POST",
+        headers:{
+            "Content-Type" : "application/json"
+        },
+        body: JSON.stringify({
+            cookie: cookieJWT
+        })
+      })
+      console.log(cokDecrypt)
+      const answer = await cokDecrypt.json();
+      console.log('ans')
+    console.log(answer);
+    id_us=answer.id_usuario;
+      }
+  catch (error) {
+    console.log(error)
+  }
+ 
+
 
 //Configuracion
 server.use(express.static(_dirname+"/Publico"));
@@ -40,7 +65,7 @@ server.get("/cita",(req,res)=> res.sendFile(_dirname + "/Paginas/Registro cita/c
 server.get("/e",(req,res)=> res.sendFile(_dirname + "/Paginas/Main pre/mainpre_english.html"))
 server.get("/registromascotas",(req,res)=> res.sendFile(_dirname + "/Paginas/Registro mascota/Registro mascota.html"))
 server.get("/extrinfoanimales", (req,res)=>{
-    conn.query('SELECT nombre_animal, id_animal from animales where fk_usuario = 1;', (err,resu)=>{
+    conn.query('SELECT nombre_animal, id_animal from animales where fk_usuario ='+id_us+';', (err,resu)=>{
         if(err){
            console.log(err)}
            if (resu.length === 0) {
@@ -84,7 +109,7 @@ server.post("/postcitasmascota",(req,res)=>{
  const insertQuery = `
  INSERT INTO citas (fk_animal, fk_usuario, fecha, hora, motivo_cita) VALUES
  (?, ?, ?, ?, ?)`;
- const valorescitas= [MascotaA ,1, fechaRC, horaRcita, Motivo]; //Insertar id_usuario
+ const valorescitas= [MascotaA ,id_us, fechaRC, horaRcita, Motivo]; //Insertar id_usuario
 
  conn.query(insertQuery, valorescitas, (err,result)=> {
     if (err) {
@@ -105,7 +130,7 @@ import db from "mysql2";
 export const conn=db.createConnection({
 host: /*process.env.HOST ||*/ "localhost",
 user: /*process.env.USER ||*/  "root",          // Remplazar con tu nombre de usuario
-password: /*process.env.PASSWORD ||*/ "root",  // Remplazar con tu contraseña
+password: /*process.env.PASSWORD ||*/ "juanito1",  // Remplazar con tu contraseña
 database: /*process.env.DATABASE ||*/ "vet2care",
 port: 3306,
 });
@@ -124,7 +149,7 @@ import bodyParser from 'body-parser';
 server.post("/postmascota", (req, res) => {
     const { NombreA, EspecieA, RazaA, EdadA, PesoA, SexoA, DescripcionColorA } = req.body;
 
-    conn.query("SELECT * FROM animales WHERE fk_usuario = 17;", (err, trow) => {
+    conn.query("SELECT * FROM animales WHERE fk_usuario ="+id_us+";", (err, trow) => {
         if (err) {
             console.log("Error fetching data", err);
             return res.status(500).send("Error fetching data");
@@ -140,9 +165,9 @@ server.post("/postmascota", (req, res) => {
             return res.status(400).send("Repetido todo");
         } else{const insertQuery = `
                 INSERT INTO animales(nombre_animal, especie_a, raza_a, edad, peso_a, sexo_a, info_adicional_a, fk_usuario)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+                VALUES (?, ?, ?, ?, ?, ?, ?, ''+ +'');
             `;
-            const insertValues = [NombreA, EspecieA, RazaA, EdadA, PesoA, SexoA, DescripcionColorA, 17];
+            const insertValues = [NombreA, EspecieA, RazaA, EdadA, PesoA, SexoA, DescripcionColorA,id_us ];
 
             conn.query(insertQuery, insertValues, (err, results) => {
                 if (err) {
