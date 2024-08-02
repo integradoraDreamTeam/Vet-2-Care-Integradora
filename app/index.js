@@ -70,12 +70,12 @@ server.post("/llegafecha", (req, res) => {
 
 server.post("/postcitasmascota",(req,res)=>{
     console.log(req.body)
- const { MascotaA, fechaRC, horaRcita, Motivo} = req.body;
+ const { MascotaA, fechaRC, horaRcita, Motivo, id } = req.body;
 
  const insertQuery = `
  INSERT INTO citas (fk_animal, fk_usuario, fecha, hora, motivo_cita) VALUES
  (?, ?, ?, ?, ?)`;
- const valorescitas= [MascotaA ,id_us, fechaRC, horaRcita, Motivo]; //Insertar id_usuario
+ const valorescitas= [MascotaA ,id, fechaRC, horaRcita, Motivo]; //Insertar id_usuario
 
  conn.query(insertQuery, valorescitas, (err,result)=> {
     if (err) {
@@ -96,7 +96,7 @@ import db from "mysql2";
 export const conn=db.createConnection({
 host: /*process.env.HOST ||*/ "localhost",
 user: /*process.env.USER ||*/  "root",          // Remplazar con tu nombre de usuario
-password: /*process.env.PASSWORD ||*/ "root",  // Remplazar con tu contraseña
+password: /*process.env.PASSWORD ||*/ "juanito1",  // Remplazar con tu contraseña
 database: /*process.env.DATABASE ||*/ "vet2care",
 port: 3306,
 });
@@ -114,8 +114,8 @@ import bodyParser from 'body-parser';
 //Submit en la db
 server.post("/postmascota", (req, res) => {
     const { NombreA, EspecieA, RazaA, EdadA, PesoA, SexoA, DescripcionColorA } = req.body;
-
-    conn.query("SELECT * FROM animales WHERE fk_usuario ="+id_us+";", (err, trow) => {
+console.log(req.body);
+    conn.query("SELECT * FROM animales WHERE fk_usuario = 1;", (err, trow) => {
         if (err) {
             console.log("Error fetching data", err);
             return res.status(500).send("Error fetching data");
