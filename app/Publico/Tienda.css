@@ -62,6 +62,33 @@ header {
   color: #7ED957;
 }
 
+.Separame {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  width: 50%;
+  
+}
+
+.sep {
+  margin-top: 1px;
+}
+.sepa{
+  margin-top: 1px;
+  margin-bottom: 22px;
+}
+#pad {
+  margin-top: 13px;
+  margin-bottom: 22px;
+}
+
+.PreBot {
+  margin-top: 14px;
+}
+
+
+
+
 .header .btn {
   width: 11vw;
   height: 30px;
@@ -171,6 +198,7 @@ header {
   height: 382px;
   display: flex;
   flex-direction: column;
+  justify-content: end;
 }
 .btn {
   width: 10vw;
