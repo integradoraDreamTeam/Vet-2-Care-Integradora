@@ -8,6 +8,9 @@ server.set("port",4500);
 server.listen(server.get("port"));
 import cors from 'cors'
 
+let resultadohorasCitas = {};
+
+
 //Meter el dirmane
 import path from 'path';
 import {fileURLToPath} from 'url';
@@ -45,6 +48,10 @@ server.get("/extrinfoanimales", (req,res)=>{
  res.send(resu)
     })
 })
+server.get("/horasdisponibles", (req, res) => {
+    res.json(resultadohorasCitas);
+});
+
 
 
 server.post("/api/login",authentication.login)
@@ -53,6 +60,42 @@ server.post("/api/getData",authentication.getData)
 server.post("/api/getPets",authentication.getPets)
 server.post("/api/revisarCookie",authentication.revisarCookie)
 server.post("/api/getCitas",authentication.getCitas)
+server.post("/llegafecha", (req, res) => {
+    const checarfecha = req.body.fecha;
+    
+    conn.query('SELECT hora_cita_disponible FROM citas_disponibles WHERE fecha_cita_disponible = ? and disponible_cita=0 ;', [checarfecha], (err, resultadoConsulta) => {
+        if (err) {
+            console.error(err);
+            res.status(500).send('Error en la consulta');
+        } else {
+            resultadohorasCitas = resultadoConsulta;
+            res.json(resultadoConsulta);
+        }
+    });
+});
+
+server.post("/postcitasmascota",(req,res)=>{
+    console.log(req.body)
+ const { MascotaA, fechaRC, horaRcita, Motivo} = req.body;
+
+ const insertQuery = `
+ INSERT INTO citas (fk_animal, fk_usuario, fecha, hora, motivo_cita) VALUES
+ (?, ?, ?, ?, ?)`;
+ const valorescitas= [MascotaA ,1, fechaRC, horaRcita, Motivo]; //Insertar id_usuario
+
+ conn.query(insertQuery, valorescitas, (err,result)=> {
+    if (err) {
+        console.log("Error al insertar cita", err);
+        return res.status(500).send("Error al insertar cita");
+    }else{
+
+    console.log("Data inserted successfully");
+    return res.redirect("/"); // Poner bien la redirect
+}
+ })
+})
+
+
  
 //Conexion con la base de datos
 import db from "mysql2";
