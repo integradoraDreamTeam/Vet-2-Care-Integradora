@@ -70,12 +70,12 @@ server.post("/llegafecha", (req, res) => {
 
 server.post("/postcitasmascota",(req,res)=>{
     console.log(req.body)
- const { MascotaA, fechaRC, horaRcita, Motivo, id } = req.body;
+ const { MascotaA, fechaRC, horaRcita, Motivo} = req.body;
 
  const insertQuery = `
  INSERT INTO citas (fk_animal, fk_usuario, fecha, hora, motivo_cita) VALUES
- (?, ?, ?, ?, ?)`;
- const valorescitas= [MascotaA ,id, fechaRC, horaRcita, Motivo]; //Insertar id_usuario
+ (?, 6, ?, ?, ?)`;
+ const valorescitas= [MascotaA ,fechaRC, horaRcita, Motivo]; //Insertar id_usuario
 
  conn.query(insertQuery, valorescitas, (err,result)=> {
     if (err) {
@@ -131,9 +131,9 @@ console.log(req.body);
             return res.status(400).send("Repetido todo");
         } else{const insertQuery = `
                 INSERT INTO animales(nombre_animal, especie_a, raza_a, edad, peso_a, sexo_a, info_adicional_a, fk_usuario)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ''+ +'');
+                VALUES (?, ?, ?, ?, ?, ?, ?,6);
             `;
-            const insertValues = [NombreA, EspecieA, RazaA, EdadA, PesoA, SexoA, DescripcionColorA,id_us ];
+            const insertValues = [NombreA, EspecieA, RazaA, EdadA, PesoA, SexoA, DescripcionColorA ];
 
             conn.query(insertQuery, insertValues, (err, results) => {
                 if (err) {

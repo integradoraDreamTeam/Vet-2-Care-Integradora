@@ -48,12 +48,29 @@ form.addEventListener('submit', async (event) => {
     const formJSON = Object.fromEntries(formData.entries());
 
     try {
+        const cookieJWT= document.cookie.split("; ").find(cookie=>cookie.startsWith("jwt=")).slice(4);
+        const cokDecrypt=await fetch('http://localhost:4500/api/revisarCookie',{
+            method:"POST",
+            headers:{
+                "Content-Type" : "application/json"
+            },
+            body: JSON.stringify({
+                cookie: cookieJWT
+            })
+        });
+        if(cookieJWT==null){
+            window.location.href="/"
+        };
+        const res=await cokDecrypt.json();
+        const id=res.id_usuario;
+        
         const response = await fetch('/postmascota', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(formJSON)
+            body: 
+                JSON.stringify(formJSON,id)
         });
 
         if (!response.ok) {
