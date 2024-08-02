@@ -2,6 +2,7 @@ import bcryptjs from 'bcryptjs';
 import jsonwebtoken from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import {conn} from '../index.js'
+import { func } from 'promisify';
 
 dotenv.config();
 
@@ -149,6 +150,19 @@ function getAnimal(req,res){
     })
 }
 
+function extrinfoanimales(req,res){
+    conn.query('SELECT nombre_animal, id_animal from animales where fk_usuario ='+req.body.id+';', (err,resu)=>{
+        if(err){
+            console.log(err)}
+        if (resu.length === 0) {
+            console.log('No se encontraron animales');
+            return res.status(404).send('No se encontraron animales');
+        }else{
+            res.send(resu)
+        }
+    })
+}
+
 export const methods={
     login,
     registrer,
@@ -157,5 +171,6 @@ export const methods={
     getCitas,
     revisarCookie,
     getHistorial,
-    getAnimal
+    getAnimal,
+    extrinfoanimales
 }

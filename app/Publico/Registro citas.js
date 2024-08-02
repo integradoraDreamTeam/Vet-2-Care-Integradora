@@ -32,12 +32,32 @@ const cerrar_dialog=document.getElementById("cerrar_alertaa")
             cookie: cookieJWT
         })
       })
-      console.log(cokDecrypt)
+      //console.log(cokDecrypt)
       const answer = await cokDecrypt.json();
       console.log('ans')
-    console.log(answer);
+      console.log(answer.id_usuario);
+
+      const response = await fetch('http://localhost:4500/api/extrinfoanimales',{
+        method:"POST",
+          headers:{
+              "Content-Type" : "application/json"
+          },
+          body: JSON.stringify({
+              id: answer.id_usuario
+          })
+      });
+      console.log
+      if (!response.ok) return; // Salir si hay un error
+  
+      const data = await response.json();
+      console.log(data)
+  
+      if (data.length === 0) {
+          console.log('No se encontraron animales');
+      } else {
+          console.log('Datos recibidos:', data);
       }
-  catch (error) {
+    }catch (error) {
     console.log(error)
   }
  
@@ -46,23 +66,6 @@ const cerrar_dialog=document.getElementById("cerrar_alertaa")
   
     
   try {
-    const response = await fetch('/extrinfoanimales');
-    if (!response.ok) {
-        if (response.status === 404) {
-         abrir_alertaM();
-        } else {
-            console.error('Error en la solicitud:', response.statusText);
-        }
-        return; // Salir si hay un error
-    }
-
-    const data = await response.json();
-
-    if (data.length === 0) {
-        console.log('No se encontraron animales');
-    } else {
-        console.log('Datos recibidos:', data);
-
         // Se insertan en las opciones del form, los animales disponibles
         const formCita = document.getElementById('MascotaA');
         data.forEach(breed => {
@@ -71,8 +74,7 @@ const cerrar_dialog=document.getElementById("cerrar_alertaa")
             opcion.textContent = breed.nombre_animal;
             formCita.appendChild(opcion);
         });
-    }
-} catch (error) {
+    }catch (error) {
     console.error('Hubo un problema con la solicitud fetch:', error);
 }
 

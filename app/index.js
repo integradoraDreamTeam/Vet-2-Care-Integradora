@@ -15,31 +15,6 @@ let resultadohorasCitas = {};
 import path from 'path';
 import {fileURLToPath} from 'url';
 const _dirname = path.dirname(fileURLToPath(import.meta.url));
-let id_us;
-try {
-    const cookieJWT= document.cookie.split("; ").find(cookie=>cookie.startsWith("jwt=")).slice(4);
-    //console.log('cookie')
-    console.log(cookieJWT)
-    const cokDecrypt=await fetch('http://localhost:4500/api/revisarCookie',{
-        method:"POST",
-        headers:{
-            "Content-Type" : "application/json"
-        },
-        body: JSON.stringify({
-            cookie: cookieJWT
-        })
-      })
-      console.log(cokDecrypt)
-      const answer = await cokDecrypt.json();
-      console.log('ans')
-    console.log(answer);
-    id_us=answer.id_usuario;
-      }
-  catch (error) {
-    console.log(error)
-  }
- 
-
 
 //Configuracion
 server.use(express.static(_dirname+"/Publico"));
@@ -64,16 +39,7 @@ server.get("/s",(req,res)=> res.sendFile(_dirname + "/Paginas/Tienda/Productos/P
 server.get("/cita",(req,res)=> res.sendFile(_dirname + "/Paginas/Registro cita/citas.html"))
 server.get("/e",(req,res)=> res.sendFile(_dirname + "/Paginas/Main pre/mainpre_english.html"))
 server.get("/registromascotas",(req,res)=> res.sendFile(_dirname + "/Paginas/Registro mascota/Registro mascota.html"))
-server.get("/extrinfoanimales", (req,res)=>{
-    conn.query('SELECT nombre_animal, id_animal from animales where fk_usuario ='+id_us+';', (err,resu)=>{
-        if(err){
-           console.log(err)}
-           if (resu.length === 0) {
-            console.log('No se encontraron animales');
-            return res.status(404).send('No se encontraron animales');}
- res.send(resu)
-    })
-})
+server.post("/api/extrinfoanimales",authentication.extrinfoanimales)
 server.get("/horasdisponibles", (req, res) => {
     res.json(resultadohorasCitas);
 });
@@ -130,7 +96,7 @@ import db from "mysql2";
 export const conn=db.createConnection({
 host: /*process.env.HOST ||*/ "localhost",
 user: /*process.env.USER ||*/  "root",          // Remplazar con tu nombre de usuario
-password: /*process.env.PASSWORD ||*/ "juanito1",  // Remplazar con tu contraseña
+password: /*process.env.PASSWORD ||*/ "root",  // Remplazar con tu contraseña
 database: /*process.env.DATABASE ||*/ "vet2care",
 port: 3306,
 });
