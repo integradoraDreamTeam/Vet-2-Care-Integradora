@@ -25,14 +25,16 @@
         <!-- INICIO FORM CITAS -->
         <div class="pets">
             <div class="card">
-                <form action="/postmascota" method="post"> 
+                <form id="petForm"> 
                     <div class="innercard">  
                         <div class="primarydata">
                             <h2>Nombre</h2>
+                            <label for="NombreA" id="nameLab">
                             <input type="text" class="input" name="NombreA" id="NombreA" placeholder="Nombre de tu mascota">
-                            <label>
+                            </label>
+                            <label for="EspecieA" id="EspecieLab">
                                 <h2>¿Qué animal es?</h2>
-                                <select name="EspecieA" class="input" id="EspecieA" title="Especie del animal">
+                                <select name="EspecieA" class="input" id="EspecieA" title="Especie del animal" name="EspecieA">
                                     <option hidden>Especie</option>
                                     <option value="perro">Perro</option>
                                     <option value="gato">Gato</option>
@@ -42,21 +44,21 @@
                                     <option value="pez">Pez</option>
                                 </select>
                             </label>
-                            <label for="RazaA">
+                            <label for="RazaA" id="razaLab">
                                 <h2>¿Cuál es su raza?</h2>
                                 <select name="RazaA" class="input" id="RazaA" title="Raza del animal">
                                     <option hidden>Raza</option>            
                                 </select>
                             </label>
-                            <label for="EdadA">
+                            <label for="EdadA" id="EdadLab">
                                 <h2>Edad</h2>
-                                <input type="number" class="input" name="EdadA" placeholder="Edad en años (Aproximado)">
+                                <input type="number" class="input" name="EdadA" id="EdadA" placeholder="Edad en años (Aproximado)">
                             </label>
-                            <label for="PesoA">
+                            <label for="PesoA" id="PesoLab">
                                 <h2>Peso</h2>
                                 <input type="number" class="input" name="PesoA" id="PesoA" placeholder="Peso en Kg">
                             </label>
-                            <label for="">
+                            <label for="SexoA" id="SexoLab">
                                 <h2>Sexo</h2>
                                 <select name="SexoA" class="input" id="SexoA" >
                                     <option value="" hidden>Selecciona el sexo</option>

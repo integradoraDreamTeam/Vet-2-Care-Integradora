@@ -70,12 +70,12 @@ server.post("/llegafecha", (req, res) => {
 
 server.post("/postcitasmascota",(req,res)=>{
     console.log(req.body)
- const { MascotaA, fechaRC, horaRcita, Motivo} = req.body;
+ const { MascotaA, id_usr, fechaRC, horaRcita, Motivo} = req.body;
 
  const insertQuery = `
  INSERT INTO citas (fk_animal, fk_usuario, fecha, hora, motivo_cita) VALUES
- (?, 1, ?, ?, ?)`;
- const valorescitas= [MascotaA ,fechaRC, horaRcita, Motivo]; //Insertar id_usuario
+ (?, ?, ?, ?, ?)`;
+ const valorescitas= [MascotaA, id_usr, fechaRC, horaRcita, Motivo]; //Insertar id_usuario
 
  conn.query(insertQuery, valorescitas, (err,result)=> {
     if (err) {
@@ -84,7 +84,7 @@ server.post("/postcitasmascota",(req,res)=>{
     }else{
 
     console.log("Data inserted successfully");
-    return res.redirect("/"); // Poner bien la redirect
+    return res.send({redirect:"/"}); // Poner bien la redirect
 }
  })
 })
@@ -96,7 +96,7 @@ import db from "mysql2";
 export const conn=db.createConnection({
 host: /*process.env.HOST ||*/ "localhost",
 user: /*process.env.USER ||*/  "root",          // Remplazar con tu nombre de usuario
-password: /*process.env.PASSWORD ||*/ "juanito1",  // Remplazar con tu contraseña
+password: /*process.env.PASSWORD ||*/ "root",  // Remplazar con tu contraseña
 database: /*process.env.DATABASE ||*/ "vet2care",
 port: 3306,
 });
@@ -113,16 +113,16 @@ import bodyParser from 'body-parser';
 
 //Submit en la db
 server.post("/postmascota", (req, res) => {
-    const { NombreA, EspecieA, RazaA, EdadA, PesoA, SexoA, DescripcionColorA } = req.body;
-console.log(req.body);
-    conn.query("SELECT * FROM animales WHERE fk_usuario = 1;", (err, trow) => {
+    const { NombreA, EspecieA, RazaA, EdadA, PesoA, SexoA, InfoA, id_usr } = req.body;
+    console.log(id_usr);
+    conn.query("SELECT * FROM animales WHERE fk_usuario = "+id_usr+";", (err, trow) => {
         if (err) {
             console.log("Error fetching data", err);
             return res.status(500).send("Error fetching data");
         }
 
        const repetido= trow.some((row) => {
-            return row.nombre_animal == NombreA && row.especie_a == EspecieA && row.raza_a == RazaA && row.edad == EdadA && row.peso_a == PesoA && row.sexo_a == SexoA && row.info_adicional_a == DescripcionColorA 
+            return row.nombre_animal == NombreA && row.especie_a == EspecieA && row.raza_a == RazaA && row.edad == EdadA && row.peso_a == PesoA && row.sexo_a == SexoA && row.info_adicional_a == InfoA 
                 
         });
 
@@ -131,9 +131,9 @@ console.log(req.body);
             return res.status(400).send("Repetido todo");
         } else{const insertQuery = `
                 INSERT INTO animales(nombre_animal, especie_a, raza_a, edad, peso_a, sexo_a, info_adicional_a, fk_usuario)
-                VALUES (?, ?, ?, ?, ?, ?, ?,1);
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?);
             `;
-            const insertValues = [NombreA, EspecieA, RazaA, EdadA, PesoA, SexoA, DescripcionColorA ];
+            const insertValues = [NombreA, EspecieA, RazaA, EdadA, PesoA, SexoA, InfoA, id_usr ];
 
             conn.query(insertQuery, insertValues, (err, results) => {
                 if (err) {
@@ -142,7 +142,7 @@ console.log(req.body);
                 }
 
                 console.log("Data inserted successfully");
-                return res.redirect("/");
+                return res.send({redirect:"/"});
             });
         }
     });

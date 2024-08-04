@@ -22,7 +22,7 @@ const cerrar_dialog=document.getElementById("cerrar_alertaa")
   try {
     const cookieJWT= document.cookie.split("; ").find(cookie=>cookie.startsWith("jwt=")).slice(4);
     //console.log('cookie')
-    console.log(cookieJWT)
+    //console.log(cookieJWT)
     const cokDecrypt=await fetch('http://localhost:4500/api/revisarCookie',{
         method:"POST",
         headers:{
@@ -34,8 +34,8 @@ const cerrar_dialog=document.getElementById("cerrar_alertaa")
       })
       //console.log(cokDecrypt)
       const answer = await cokDecrypt.json();
-      console.log('ans')
-      console.log(answer.id_usuario);
+      //onsole.log('ans')
+      //console.log(answer.id_usuario);
 
       const response = await fetch('http://localhost:4500/api/extrinfoanimales',{
         method:"POST",
@@ -50,7 +50,7 @@ const cerrar_dialog=document.getElementById("cerrar_alertaa")
       if (!response.ok) return; // Salir si hay un error
   
       const data = await response.json();
-      console.log(data)
+      //console.log(data)
   
       if (data.length === 0) {
           console.log('No se encontraron animales');
@@ -72,7 +72,7 @@ const cerrar_dialog=document.getElementById("cerrar_alertaa")
 
   const modal = document.getElementById("modal_container");
 
-    const fechaT=document.getElementById('fechaRcita');
+    const fechaT=document.getElementById('fechaRC');
 
     
     fechaT.addEventListener('change', (event) => {
@@ -88,7 +88,7 @@ const cerrar_dialog=document.getElementById("cerrar_alertaa")
     })
     .then(response => response.json())
     .then(data => {
-      console.log(data);
+      //console.log(data);
 
       // Verifica que el elemento existe
       const selectElement = document.getElementById('horaRcita');
@@ -106,7 +106,41 @@ const cerrar_dialog=document.getElementById("cerrar_alertaa")
     .catch(error => console.error('Error:', error));
 
     })
-    
-    
-
+})
+document.getElementById('citaForm').addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  const cookieJWT= document.cookie.split("; ").find(cookie=>cookie.startsWith("jwt=")).slice(4);
+  //console.log('cookie')
+  console.log(cookieJWT)
+  const cokDecrypt=await fetch('http://localhost:4500/api/revisarCookie',{
+    method:"POST",
+    headers:{
+      "Content-Type" : "application/json"
+    },
+      body: JSON.stringify({
+          cookie: cookieJWT
+      })
+    })
+    //console.log(cokDecrypt)
+  const answer = await cokDecrypt.json();
+  //console.log(answer);
+  //console.log(e.target.MascotaA.value)
+  const dir= await fetch('http://localhost:4500/postcitasmascota',{
+    method:"POST",
+        headers:{
+            "Content-Type" : "application/json"
+        },
+        body: JSON.stringify({
+            MascotaA: e.target.MascotaA.value,
+            fechaRC: e.target.fechaRC.value,
+            horaRcita: e.target.horaRcita.value,
+            Motivo: e.target.col1.value,
+            id_usr: answer.id_usuario
+      })
+    })
+    const redir= await dir.json();
+    console.log(redir)
+    if(redir.redirect){
+      window.location.href=redir.redirect;
+    }
 })

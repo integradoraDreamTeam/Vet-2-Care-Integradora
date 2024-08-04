@@ -46,7 +46,13 @@ form.addEventListener('submit', async (event) => {
 
     const formData = new FormData(form);
     const formJSON = Object.fromEntries(formData.entries());
+});
+});
 
+document.getElementById('petForm').addEventListener('submit',async (e)=>{
+    e.preventDefault();
+    let user;
+    console.log(e);
     try {
         const cookieJWT= document.cookie.split("; ").find(cookie=>cookie.startsWith("jwt=")).slice(4);
         const cokDecrypt=await fetch('http://localhost:4500/api/revisarCookie',{
@@ -62,28 +68,32 @@ form.addEventListener('submit', async (event) => {
             window.location.href="/"
         };
         const res=await cokDecrypt.json();
+        user=res;
         const id=res.id_usuario;
-        
-        const response = await fetch('/postmascota', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: 
-                JSON.stringify(formJSON,id)
-        });
-
-        if (!response.ok) {
-            if (response.status === 400) {
-                abrir_alertaM();
-            } else {
-                console.error('Error en el servidor');
-            }
-        } else {
-            window.location.href = '/';
-        }
-    } catch (error) {
-        console.error('Error:', error);
+    }catch(err){
+        console.log('Error pa')
+        console.log(err)
     }
-});
-});
+    console.log(user);
+    const ans= await fetch('http://localhost:4500/postmascota',{
+        method:"POST",
+        headers:{
+            "Content-Type" : "application/json"
+        },
+        body: JSON.stringify({
+            NombreA: e.target.NombreA.value,
+            EspecieA: e.target.EspecieA.value,
+            RazaA: e.target.RazaA.value,
+            EdadA: e.target.EdadA.value,
+            PesoA: e.target.PesoA.value,
+            SexoA: e.target.SexoA.value,
+            InfoA: e.target.col1.value,
+            id_usr: user.id_usuario
+        })
+    })
+    const answer= await ans.json();
+    console.log(answer);
+    if(answer.redirect){
+        window.location.href=answer.redirect;
+    }
+})
