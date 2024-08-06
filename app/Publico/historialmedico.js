@@ -33,22 +33,21 @@ document.addEventListener('DOMContentLoaded',async ()=>{
         const div_desc=document.createElement('div');
         div_desc.className='descdata'
             const h3_data=document.createElement('h3');
-            h3_data.style='color: #004E71';
+            h3_data.style='color: #476d34';
             const desc=document.createElement('p');
             desc.innerHTML=resJson[i].motivo_cita;
         const div_pc=document.createElement('div');
         div_pc.className='primarydata';
         div_pc.style='flex-direction: column; height: auto';
             const h3_f=document.createElement('h3');
-            h3_f.style='color: #004E71';
+            h3_f.style='color: #476d34';
             h3_f.innerHTML='Fecha: '
             const p_fecha=document.createElement('p');
             p_fecha.innerHTML=""+resJson[i].fecha+""
             const h3_h=document.createElement('h3');
-            h3_h.style='color: #004E71'
+            h3_h.style='color: #476d34'
             h3_h.innerHTML='Hora: '
             const p_hora=document.createElement('p');
-            p_hora.style='color: #004E71'
             p_hora.innerHTML=""+resJson[i].hora+"";
         const div_inner=document.createElement('div');
         div_inner.className='innercard';
@@ -67,7 +66,7 @@ document.addEventListener('DOMContentLoaded',async ()=>{
         div_card.appendChild(div_inner);
     }
     const h1=document.createElement('h1');
-    h1.style='color: #004E71';
+    h1.style='color: #314E23';
     h1.innerHTML='Historial médico de '+animal[0].nombre_animal;
 
     div_pets.appendChild(h1);

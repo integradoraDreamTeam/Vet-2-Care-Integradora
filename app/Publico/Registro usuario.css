@@ -8,12 +8,11 @@
 body {
     display: flex;
     align-items: center;
-    padding-left: 15%;
-    justify-content: left;
+    justify-content: center;
     height: 100vh;
     background-size: cover;
     width: 100%;
-    background-image: linear-gradient(to left, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.5) 50%), url(fo.png);
+    background-image: linear-gradient(to left, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.5) 50%), url(Image/fo.png);
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
@@ -34,7 +33,7 @@ body {
     display: flex;
     align-items: center;
     text-align: center;
-    background-image: linear-gradient(60deg, #E6F4F1, #8DC7BB);
+    background-image: linear-gradient(60deg, #9ad89c, #98c79c);
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
 }
@@ -57,16 +56,16 @@ body {
 .info-content input {
     background-color: transparent;
     outline: none;
-    border: solid 2px #9191bd;
+    border: solid 2px #59955C;
     border-radius: 20px;
     padding: 10px 20px;
-    color: #9191bd;
+    color: #59955C;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 .info-content input:hover {
-    background-color: #9191bd;
+    background-color: #59955C;
     border: none;
     color: white;
     box-shadow: 0 2px 5px rgba(0,0,0, .1);
@@ -105,14 +104,14 @@ body {
     padding: 15px;
     cursor: pointer;
     margin: 0 10px;
-    color: #9191bd;
-    border: solid thin #9191bd;
+    color: #59955C;
+    border: solid thin #59955C;
     transition: background-color 0.3s ease;
     box-shadow: 0 2px 5px rgba(0,0,0, .1);
 }
 
 .social-icons i:hover {
-    background-color: #c7c7f3;
+    background-color: #59955C;
     color: #fff;
 }
 
@@ -146,7 +145,7 @@ body {
 
 .user-form input[type="submit"],
 .user-form input[type="button"] {
-    background-color: #9191bd;
+    background-color: #59955C;
     color: #fff;
     border-radius: 20px;
     border: none;
@@ -158,10 +157,19 @@ body {
 
 .user-form input[type="submit"]:hover,
 .user-form input[type="button"]:hover {
-    background-color: #7a7a9a;
+    background-color: #59955C;
 }
 
 .hide {
     position: absolute;
     transform: translateY(-300%);
+}
+
+.info-content h2{
+    color: #1e5728;
+    font-weight: bold;
+}
+.form-content h2{
+    color: #1e5728;
+    font-weight: bold;
 }

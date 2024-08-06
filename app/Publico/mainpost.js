@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', async (req)=>{
         
         const welcom=document.createElement('h1');
         welcom.style='text-align: center;'
-        welcom.innerHTML='¡Bienvendio '+res.nombre_usuario+'!';
+        welcom.innerHTML='¡Bienvenido '+res.nombre_usuario+'!';
 
         const div_pets=document.getElementById('div_pets')
 
@@ -102,7 +102,6 @@ document.addEventListener('DOMContentLoaded', async (req)=>{
                         h3_h.style='color: #004E71'
                         h3_h.innerHTML='Hora: '
                         const p_hora=document.createElement('p');
-                        p_hora.style='color: #004E71'
                         p_hora.innerHTML=""+citas[j].hora+"";
                     const div_dc=document.createElement('div');
                     div_dc.className='descdata';
