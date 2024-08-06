@@ -156,6 +156,7 @@ header {
   align-items: center;
   width: 100%;
   z-index: 2; 
+  margin-bottom: 2%;
 }
 
 .descdata {
