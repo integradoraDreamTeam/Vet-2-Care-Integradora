@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded',async ()=>{
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get('id');   
     console.log(id)
-    const res=await fetch('http://localhost:4500/api/getHistorial',{
+    const res=await fetch('https://vet-2-care-integradora-2.onrender.com/api/getHistorial',{
         method:"POST",
             headers:{
                 "Content-Type" : "application/json"
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded',async ()=>{
     if(!res) return;
     const resJson= await res.json();
 
-    const an=await fetch('http://localhost:4500/api/getAnimal',{
+    const an=await fetch('https://vet-2-care-integradora-2.onrender.com/api/getAnimal',{
         method:"POST",
             headers:{
                 "Content-Type" : "application/json"

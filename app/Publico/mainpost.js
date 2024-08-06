@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', async (req)=>{
         const cookieJWT= document.cookie.split("; ").find(cookie=>cookie.startsWith("jwt=")).slice(4);
         //console.log('cookie')
         //console.log(cookieJWT)
-        const cokDecrypt=await fetch('http://localhost:4500/api/revisarCookie',{
+        const cokDecrypt=await fetch('https://vet-2-care-integradora-2.onrender.com/api/revisarCookie',{
             method:"POST",
             headers:{
                 "Content-Type" : "application/json"
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', async (req)=>{
         };
         const res=await cokDecrypt.json();
         //console.log(res.nombre_usuario) 
-        const an= await fetch('http://localhost:4500/api/getPets',{
+        const an= await fetch('https://vet-2-care-integradora-2.onrender.com/api/getPets',{
             method:"POST",
             headers:{
                 "Content-Type" : "application/json"
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', async (req)=>{
         };
         const animals=await an.json();
        
-        const cit=await fetch('http://localhost:4500/api/getCitas',{
+        const cit=await fetch('https://vet-2-care-integradora-2.onrender.com/api/getCitas',{
             method:"POST",
             headers:{
                 "Content-Type" : "application/json"
