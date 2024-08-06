@@ -1,185 +1,304 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Tienda</title>
-        <link rel="stylesheet" href="Tienda.css"/>
-        <link rel="icon" type="png" href="veterinario.png">
-    </head>
-    <body bgcolor="F8FFF8">
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tienda</title>
+    <link rel="stylesheet" href="Tienda.css"/>
+    <link rel="icon" type="image/png" href="veterinario.png">
 
-        <!-- INICIO HEADER -->
-        <header>
-            <div class="header">
-                <img src="Vet 2 Care.png" style="width: 4.160887656vw; height: 60px;">
-                <ul>
-                    <a href="/post"><li>Inicio</li></a>
-                    <a href="/store"><li>Tienda</li></a>
-                    <a href="/us"><li>Nosotros</li></a>
-                </ul>
-                <button class="btn" onclick="window.location.href='/sMa'">Añadir mascota</button>
-                <button class="btn" onclick="window.location.href='/cita'">Agendar cita</button>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Wendy+One&family=Ysabeau+Infant:ital,wght@0,1..1000;1,1..1000&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">   
+</head>
+<body bgcolor="F8FFF8">
+
+
+    <!-- INICIO HEADER -->
+    <header>
+        <div class="header">
+            <img src="Vet 2 Care.png" alt="Logo">
+            <ul class="nav-links">
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/store">Tienda</a></li>
+                <li><a href="/us">Nosotros</a></li>
+                <!-- <li><a href="#">Tu cuenta</a></li>-->
+            </ul>
+            <div class="buttons">
+                <button class="btn" id="addmas">Añadir mascota</button>
+                <button class="btn" id="addcita">Agendar cita</button>
             </div>
-        </header>
-        <div style="height: 50px;"></div>
-        <!-- FIN HEADER -->
-        <!-- INICIO IMÁGEN DE PRESENTACIÓN -->
-            <div class="image-container">
-                <img src="Perro y gato.jpg">
-                <div class="overlay"></div>
-                <div class="text-overlay">
-                    <h2>Vet Shop</h2>
-                    <p>Es imperativo darle calidad a tu mascota...</p>
-                    <button class="btn"><a href="#toys">¡Vamos!</a></button>
-                </div>
-            </div>
-        <!-- FIN IMÁGEN DE PRESENTACIÓN -->
-        <!-- INICIO PRODUCTOS JUGUETES -->
-         <h1 id="toys">Juguetes</h1>
-         <div class="toys-container">
-            <div class="toy-container">
-                <div class="toy-img">
-                    <img src="KONG - Hueso de caucho para perro.png">
-                </div>
-                <h2>KONG - Hueso de caucho para perro</h2>
-                <h3>Hueso de caucho para uso rudo.</h3>
-              
-                <div class="PreBot" style="display: flex; justify-content: start; align-items: center;">
-                    <div class="Separame"><h2 class="sep">$10.99</h2></div>
-                    <button class="btn" onclick="window.location.href='/s?nombre=KONG - Hueso de caucho para perro'">Comprar</button>
-                </div>
-            </div>
-            <div class="toy-container">
-                <div class="toy-img">
-                    <img src="KONG - Pelota de caucho.png">
-                </div>
-                <h2 class="sepa" id="pad">KONG - Pelota de caucho</h2>
-                <h3>Pelota de caucho para uso rudo.</h3>
-                <div class="PreBot"  style="display: flex; justify-content: start; align-items: center;">
-                    <div class="Separame"><h2 class="sep">$10.99</h2></div>
-                    <button class="btn"  onclick="window.location.href='/s?nombre=KONG - Pelota de caucho'">Comprar</button>
-                </div>
-            </div>
-            <div class="toy-container">
-                <div class="toy-img">
-                    <img src="KONG - Llanta de caucho.png">
-                </div>
-                <h2 class="sepa" >KONG - Llanta de caucho</h2>
-                <h3 >Llanta pequeña de caucho para uso rudo.</h3>
-                <div class="PreBot" style="display: flex; justify-content: start; align-items: center;">
-                    <div class="Separame"><h2 class="sep">$10.99</h2></div>
-                    <button class="btn" onclick="window.location.href='/s?nombre=KONG - Llanta de caucho'">Comprar</button>
+            <form class="search-form" role="search">
+                <input class="form-control" type="search" placeholder="Buscar" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Buscar</button>
+            </form>
+        </div>
+    </header>
+    <div class="spacer"></div>
+    <!-- FIN HEADER -->
+
+
+    <!-- INICIO IMAGEN DE PRESENTACIÓN -->
+    <div class="image-container">
+        <img src="Perro y gato.jpg">
+        <div class="overlay"></div>
+        <div class="text-overlay">
+            <h2>Vet Shop</h2>
+            <p>Es imperativo darle calidad a tu mascota...</p>
+            <button class="btn"><a href="#ini">¡Vamos!</a></button>
+        </div>
+    </div>
+    <!-- FIN IMAGEN DE PRESENTACIÓN -->
+
+    <main class="main-content" id="ini">
+        <section class="container container-features">
+            <div class="card-feature">
+              <ion-icon name="airplane-outline"></ion-icon>
+                <div class="feature-content">
+                    <span>Envío gratuito</span>
+                    <p>En pedido superior a $150</p>
                 </div>
             </div>
-            <div class="toy-container">
-                <div class="toy-img">
-                    <img src="Peluche de gatito.png">
-                </div>
-                <h2>Peluche de gatito</h2>
-                <h3>¡El mejor amigo para tu gato!</h3>
-                <div class="PreBot" style="display: flex; justify-content: start; align-items: center;">
-                    <div class="Separame"><h2 class="sep">$10.99</h2></div>
-                    <button class="btn" onclick="window.location.href='/s?nombre=Peluche de gatito'">Comprar</button>
-                </div>
-            </div>
-            <div class="toy-container">
-                <div class="toy-img">
-                    <img src="Peluche de conejo.png">
-                </div>
-                <h2>Peluche de conejo</h2>
-                <h3>Activa los instintos de tu gato...</h3>
-                <div class="PreBot" style="display: flex; justify-content: start; align-items: center;">
-                    <div class="Separame"><h2 class="sep">$10.99</h2></div>
-                    <button class="btn" onclick="window.location.href='/s?nombre=Peluche de conejo'">Comprar</button>
-                </div>
-            </div>
-            <div class="toy-container">
-                <div class="toy-img">
-                    <img src="Peluche de burrito.png">
-                </div>
-                <h2>Peluche de burrito</h2>
-                <h3>No está mal consentirlo de vez en cuando...</h3>
-                <div class="PreBot" id="guiones3" style="display: flex; justify-content: start; align-items: center;">
-                    <div class="Separame"><h2 class="sep">$10.99</h2></div>
-                    <button class="btn" onclick="window.location.href='/s?nombre=Peluche de burrito'">Comprar</button>
-                </div>
+
+            <div class="card-feature">
+                <ion-icon name="gift-outline"></ion-icon>
+                  <div class="feature-content">
+                      <span>Contrareembolso</span>
+                      <p>100% garantías de devolución de dinero</p>
+                  </div>
+              </div>
+
+            <div class="card-feature">
+                <ion-icon name="gift-outline"></ion-icon>
+                  <div class="feature-content">
+                      <span>Tarjeta regalo especial</span>
+                      <p>Ofrecemos bonos y descuentos</p>
+                  </div>
+              </div>
+
+              <div class="card-feature">
+                <ion-icon name="headset-outline"></ion-icon>
+                  <div class="feature-content">
+                      <span>Servicio al cliente</span>
+                      <p>Llamanos 24/7 al 614-300-56-89</p>
+                  </div>
+              </div>
+        </section>
+<br>
+
+<section class="w-70">
+    <div class="shop-category">
+        <div class="heading">
+            <h3>Compra ahora</h3>
+            <div class="paw">
+                <ion-icon name="paw-sharp"></ion-icon>
             </div>
         </div>
-        <!-- FIN PRODUCTOS JUGUETES -->
-        <!-- INICIO PRODUCTOS COMIDA -->
-        <h1>Comida</h1>
-        <div class="foods-container">
-            <div class="left-food-container">
-                <div class="left-food-img">
-                    <img src="Diamond Naturals - Comida para perro.png">
-                </div>
-                <h2>Diamond Naturals - Comida para gato de interiores</h2>
-                <h3>Fórmula de pollo y arroz.</h3>
-                <div class="PreBot" style="display: flex; justify-content: start; align-items: center;">
-                    <div class="Separame"><h2 class="sep">$10.99</h2></div>
-                    <button class="btn" onclick="window.location.href='/s?nombre=Diamond Naturals - Comida para perro'">Comprar</button>
-                </div>
+    </div>
+</section>
+
+<br>
+        <section class="container categories">
+            <h1 class="heading-1">Nuestra tienda</h1>
+            <div class="container-categories">
+                <div class="card-category category-play">
+                    <p>Juguetes</p>
+                    <span><a href="#toys">Ver más</a></span> 
+                 </div>
+
+                 <div class="card-category category-teddy">
+                    <p>Peluches</p>
+                    <span><a href="#toys">Ver más</a></span> 
+                 </div>
+
+                 <div class="card-category category-food">
+                    <p>Comida</p>
+                    <span><a href="#food">Ver más</a></span> 
+                 </div>
             </div>
-            <div class="right-food-container">
-                <div class="right-food-subcontainer">
-                    <div class="right-food-img">
-                        <img src="Diamond Naturals - Comida para gato.png">
-                    </div>
-                    <h2>Diamond Naturals - Comida para gato de interiores</h2>
-                    <h3>Fórmula de pollo y arroz.</h3>
-                    <div class="PreBot" style="display: flex; justify-content: start; align-items: center;">
-                        <div class="Separame"><h2 class="sep">$10.99</h2></div>
-                        <button class="btn" onclick="window.location.href='/s?nombre=Diamond Naturals - Comida para gato'">Comprar</button>
-                    </div>
-                </div>
-                <div class="right-food-subcontainer">
-                    <div class="right-food-img">
-                        <img src="Diamond Naturals - Comida para perro largo.png">
-                    </div>
-                    <h2>Diamond Naturals - Comida para perro largo</h2>
-                    <h3>Fórmula de cordero y arroz.</h3>
-                    <div class="PreBot" style="display: flex; justify-content: start; align-items: center;">
-                        <div class="Separame"><h2 class="sep">$10.99</h2></div>
-                        <button class="btn" onclick="window.location.href='/s?nombre=Diamond Naturals - Comida para perro largo'">Comprar</button>
-                    </div>
-                </div>
+        </section>
+    </main>
+
+
+  <!-- INICIO PRODUCTOS JUGUETES -->
+<h1 id="toys" class="h1toys">● Juguetes y peluches:</h1>
+<div class="toys-container">
+    <!-- Primera fila de juguetes -->
+    <div class="toy-container">
+        <div class="toy-img">
+            <img src="KONG - Hueso de caucho para perro.png">
+        </div>
+        <br>
+        <h2>KONG - Hueso de caucho</h2>
+        <h3>Hueso de caucho para uso rudo.</h3>
+        <h2>$12.99</h2>
+        <div style="display: flex; justify-content: center; align-items: center;">
+            <button class="btn" onclick="window.location.href='/s?nombre=KONG - Hueso de caucho para perro'">Comprar</button>
+        </div>
+    </div>
+    <div class="toy-container">
+        <div class="toy-img">
+            <img src="KONG - Pelota de caucho.png">
+        </div>
+        <br>
+        <h2>KONG - Pelota de caucho</h2>
+        <h3>Pelota de caucho para uso rudo.</h3>
+        <h2>$10.99</h2>
+        <div style="display: flex; justify-content: center; align-items: center;">
+            <button class="btn" onclick="window.location.href='/s?nombre=KONG - Pelota de caucho'">Comprar</button>
+        </div>
+    </div>
+    <div class="toy-container">
+        <div class="toy-img">
+            <img src="KONG - Llanta de caucho.png">
+        </div>
+        <br>
+        <h2>KONG - Llanta de caucho</h2>
+        <h3>Llanta pequeña de caucho.</h3>
+        <h2>$25.99</h2>
+        <div style="display: flex; justify-content: center; align-items: center;">
+            <button class="btn" onclick="window.location.href='/s?nombre=KONG - Llanta de caucho'">Comprar</button>
+        </div>
+    </div>
+</div>
+<div class="toys-container">
+    <!-- Segunda fila de juguetes -->
+    <div class="toy-container">
+        <div class="toy-img">
+            <img src="Peluche de gatito.png">
+        </div>
+        <br>
+        <h2>Peluche de gatito</h2>
+        <h3>¡El mejor amigo para tu gato!</h3>
+        <h2>$15.89</h2>
+        <div style="display: flex; justify-content: center; align-items: center;">
+            <button class="btn" onclick="window.location.href='/s?nombre=Peluche de gatito'">Comprar</button>
+        </div>
+    </div>
+    <div class="toy-container">
+        <div class="toy-img">
+            <img src="Peluche de conejo.png">
+        </div>
+        <br>
+        <h2>Peluche de conejo</h2>
+        <h3>Activa los instintos de tu gato...</h3>
+        <h2>$15.99</h2>
+        <div style="display: flex; justify-content: center; align-items: center;">
+            <button class="btn" onclick="window.location.href='/s?nombre=Peluche de conejo'">Comprar</button>
+        </div>
+    </div>
+    <div class="toy-container">
+        <div class="toy-img">
+            <img src="Peluche de conejo.png">
+        </div>
+        <br>
+        <h2>Peluche de burrito</h2>
+        <h3>No está mal consentirlo...</h3>
+        <h2>$15.99</h2>
+        <div style="display: flex; justify-content: center; align-items: center;">
+            <button class="btn" onclick="window.location.href='/s?nombre=Peluche de conejo'">Comprar</button>
+        </div>
+    </div>
+</div>
+<!-- FIN PRODUCTOS JUGUETES -->
+ <br>
+
+  <!-- INICIO PRODUCTOS COMIDA -->
+  <h1 id="food" class="h1food">● Comida:</h1>
+  <div class="foods-container">
+      <div class="left-food-container">
+          <div class="left-food-img">
+              <img src="Diamond Naturals - Comida para perro.png">
+          </div>
+          <h2>Diamond Naturals - Comida para gato de interiores</h2>
+          <h3>Fórmula de pollo y arroz.</h3>
+          <h2>$45.99</h2>
+          <div style="display: flex; justify-content: center; align-items: center;">
+            <br>
+              <button class="btn" onclick="window.location.href='/s?nombre=Diamond Naturals - Comida para perro'">Comprar</button>
+          </div>
+      </div>
+
+      <div class="right-food-container">
+          <div class="right-food-subcontainer">
+              <div class="right-food-img">
+                  <img src="Diamond Naturals - Comida para gato.png">
+              </div>
+              <h2>Diamond Naturals - Comida para gato de interiores</h2>
+              <h3>Fórmula de pollo y arroz.</h3>
+              <h2>$45.99</h2>
+              <div style="display: flex; justify-content: center; align-items: center;">
+                  <button class="btn" onclick="window.location.href='/s?nombre=Diamond Naturals - Comida para gato'">Comprar</button>
+              </div>
+          </div>
+
+          <div class="right-food-subcontainer">
+              <div class="right-food-img">
+                  <img src="Diamond Naturals - Comida para perro largo.png">
+              </div>
+              <h2>Diamond Naturals - Comida para perro largo</h2>
+              <h3>Fórmula de cordero y arroz.</h3>
+              <h2>$69.99</h2>
+              <div style="display: flex; justify-content: center; align-items: center;">
+                  <button class="btn" onclick="window.location.href='/s?nombre=Diamond Naturals - Comida para perro largo'">Comprar</button>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- FIN PRODUCTOS COMIDA -->
+
+<!-- INICIO FOOTER -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-block">
+            <h2>Acerca de</h2>
+            <ul>
+                <li><a href="#">Descuentos</a></li>
+                <li><a href="#">Vacantes</a></li>
+                <li><a href="#">Horarios</a></li>
+            </ul>
+        </div>
+        <div class="footer-block">
+            <h2>Ayuda</h2>
+            <ul>
+                <li><a href="#">Preguntas frecuentes</a></li>
+                <li><a href="#">Atención al cliente</a></li>
+                <li><a href="#">Contáctanos</a></li>
+            </ul>
+        </div>
+        <div class="footer-block center">
+            <img src="Vet 2 Care.png" style="width: 80px; height: auto;">
+            <div class="social-icons">
+                <ion-icon name="logo-youtube"></ion-icon>
+                <ion-icon name="logo-facebook"></ion-icon>
+                <ion-icon name="logo-instagram"></ion-icon>
             </div>
         </div>
-        <!-- FIN PRODUCTOS COMIDA -->
-        <!-- INICIO FOOTER -->
-        <div class="footer">
-            <div class="left-footer-block">
-                <h2>Acerca de</h2>
-                <h3>Descuentos</h3>
-                <h3>Vacantes</h3>
-                <h3>Horarios</h3>
-            </div>
-            <div class="left-footer-block">
-                <h2>Ayuda</h2>
-                <h3>Preguntas frecuentes</h3>
-                <h3>Atención al cliente</h3>
-                <h3>Contáctanos</h3>
-            </div>
-            <div class="center-footer-block">
-                <img src="Vet 2 Care.png" style="width: 8.321775312vw; height: 120px;">
-                <div class="social-icons">
-                    <img src="x.png">
-                    <img src="facebook.png">
-                    <img src="insta.png">
-                </div>
-            </div>
-            <div class="right-footer-block">
-                <h2>Asuntos legales</h2>
-                <h3>Términos de servicio</h3>
-                <h3>Protección de datos</h3>
-                <h3>Cookies</h3>
-            </div>
-            <div class="right-footer-block">
-                <h2>Contacto</h2>
-                <h3>vet@care.com</h3>
-                <h3>614-369-3696</h3>
-                <h3>614-303-3033</h3>
-            </div>
+        <div class="footer-block">
+            <h2>Asuntos legales</h2>
+            <ul>
+                <li><a href="#">Términos de servicio</a></li>
+                <li><a href="#">Protección de datos</a></li>
+                <li><a href="#">Cookies</a></li>
+            </ul>
         </div>
-        <script src="Tienda.js"></script>
-    </body>
+        <div class="footer-block">
+            <h2>Contacto</h2>
+            <ul>
+                <li><a href="mailto:vet@care.com">vet@care.com</a></li>
+                <li><a href="tel:614-369-3696">614-369-3696</a></li>
+                <li><a href="tel:614-303-3033">614-303-3033</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+<!-- FIN FOOTER -->
+   
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="Tienda.js"></script>
+</body>
 </html>
