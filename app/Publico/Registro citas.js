@@ -23,7 +23,7 @@ const cerrar_dialog=document.getElementById("cerrar_alertaa")
     const cookieJWT= document.cookie.split("; ").find(cookie=>cookie.startsWith("jwt=")).slice(4);
     //console.log('cookie')
     //console.log(cookieJWT)
-    const cokDecrypt=await fetch('https://vet-2-care-integradora-2.onrender.com/api/revisarCookie',{
+    const cokDecrypt=await fetch('http://localhost:4500/api/revisarCookie',{
         method:"POST",
         headers:{
             "Content-Type" : "application/json"
@@ -37,7 +37,7 @@ const cerrar_dialog=document.getElementById("cerrar_alertaa")
       //onsole.log('ans')
       //console.log(answer.id_usuario);
 
-      const response = await fetch('https://vet-2-care-integradora-2.onrender.com/api/extrinfoanimales',{
+      const response = await fetch('http://localhost:4500/api/extrinfoanimales',{
         method:"POST",
           headers:{
               "Content-Type" : "application/json"
@@ -78,7 +78,7 @@ const cerrar_dialog=document.getElementById("cerrar_alertaa")
     fechaT.addEventListener('change', (event) => {
       const fechaTent={fecha: event.target.value};
       
-      fetch('https://vet-2-care-integradora-2.onrender.com/llegafecha', {
+      fetch('http://localhost:4500/llegafecha', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -112,7 +112,7 @@ document.getElementById('citaForm').addEventListener('submit', async (e)=>{
   const cookieJWT= document.cookie.split("; ").find(cookie=>cookie.startsWith("jwt=")).slice(4);
   //console.log('cookie')
   console.log(cookieJWT)
-  const cokDecrypt=await fetch('https://vet-2-care-integradora-2.onrender.com/api/revisarCookie',{
+  const cokDecrypt=await fetch('http://localhost:4500/api/revisarCookie',{
     method:"POST",
     headers:{
       "Content-Type" : "application/json"
@@ -125,7 +125,7 @@ document.getElementById('citaForm').addEventListener('submit', async (e)=>{
   const answer = await cokDecrypt.json();
   //console.log(answer);
   //console.log(e.target.MascotaA.value)
-  const dir= await fetch('https://vet-2-care-integradora-2.onrender.com/postcitasmascota',{
+  const dir= await fetch('http://localhost:4500/postcitasmascota',{
     method:"POST",
         headers:{
             "Content-Type" : "application/json"

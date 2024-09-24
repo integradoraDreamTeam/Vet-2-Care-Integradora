@@ -55,7 +55,7 @@ document.getElementById('petForm').addEventListener('submit',async (e)=>{
     console.log(e);
     try {
         const cookieJWT= document.cookie.split("; ").find(cookie=>cookie.startsWith("jwt=")).slice(4);
-        const cokDecrypt=await fetch('https://vet-2-care-integradora-2.onrender.com/api/revisarCookie',{
+        const cokDecrypt=await fetch('http://localhost:4500/api/revisarCookie',{
             method:"POST",
             headers:{
                 "Content-Type" : "application/json"
@@ -75,7 +75,7 @@ document.getElementById('petForm').addEventListener('submit',async (e)=>{
         console.log(err)
     }
     console.log(user);
-    const ans= await fetch('https://vet-2-care-integradora-2.onrender.com/postmascota',{
+    const ans= await fetch('http://localhost:4500/postmascota',{
         method:"POST",
         headers:{
             "Content-Type" : "application/json"
