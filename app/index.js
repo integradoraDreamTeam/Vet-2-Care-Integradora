@@ -118,7 +118,7 @@ database: /*process.env.DATABASE ||*/ "vet2care",
 port: 3306,
 });
 
-Comprobacion
+//Comprobacion
 conn.connect((err)=> {
     if(err){
         console.log("Error connection to database", err);
