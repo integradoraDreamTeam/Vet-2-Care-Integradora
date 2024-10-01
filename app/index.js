@@ -4,7 +4,7 @@ import cookieParser from 'cookie-parser';
 import {methods as authentication} from './controllers/authentication.controller.js';
 import {methods as authorization} from './middlewares/authorization.js'
 const server=express();
-server.set("port",4500);
+server.set("port",4501);
 server.listen(server.get("port"));
 import cors from 'cors'
 
@@ -49,11 +49,12 @@ server.get("/horasdisponibles", (req, res) => {
 server.post("/api/login",authentication.login)
 server.post("/api/registrer",authentication.registrer)
 server.post("/api/getData",authentication.getData)
-server.post("/api/getPets",authentication.getPets)
+server.get("/api/getPets",authentication.getPets)
 server.post("/api/revisarCookie",authentication.revisarCookie)
-server.post("/api/getCitas",authentication.getCitas)
+server.get("/api/getCitas",authentication.getCitas)
 server.post("/api/getHistorial",authentication.getHistorial)
 server.post("/api/getAnimal",authentication.getAnimal)
+server.get("/api/getUsrData",authentication.getUsrData)
 server.post("/llegafecha", (req, res) => {
     const checarfecha = req.body.fecha;
     

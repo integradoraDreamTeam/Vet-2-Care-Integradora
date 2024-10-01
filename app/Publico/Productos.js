@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded',async ()=>{
             "Content-Type" : "application/json"
         },
         body: JSON.stringify({
-            name: nombre
+            name: "KONG - Hueso de caucho para perro"
         })
     });
     if(!res.ok) return;

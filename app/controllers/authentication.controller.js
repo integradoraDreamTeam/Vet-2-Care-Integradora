@@ -81,13 +81,16 @@ function getData(req,res){
 }
 
 function getPets(req,res){
-    const correo=req.body.email;
+    const correo=req.query.email;
+    console.log(req);
     conn.query("select * from usuarios where correo='"+correo+"';",(err,data)=>{
         if (err){
+            
             return res.status(400).send("No se pudo pa")
         }
-        //console.log("es data")
+        console.log(data);
         const usr=data.find(usr=>usr.correo===correo);
+        //console.log(usr);
         const id=usr.id_usuario;
         conn.query("select * from animales where fk_usuario='"+id+"';",(err,datos)=>{
             if (err){
@@ -115,8 +118,8 @@ function revisarCookie(req,res){
 }    
 
 function getCitas(req,res){
-    //console.log(req)
-    conn.query('select * from citas where fk_usuario='+req.body.id+';',(err,dates)=>{
+    console.log(req)
+    conn.query('select * from citas where fk_usuario='+req.query.id+';',(err,dates)=>{
         if(err){
             res.status(400).send('No se pudo la cita')
         }else{
@@ -162,6 +165,19 @@ function extrinfoanimales(req,res){
         }
     })
 }
+function getUsrData(req,res){
+    //console.log(req.query);
+    conn.query('select * from usuarios;',(err,data)=>{
+        const usuarioRevisar=data.find(usuario=>usuario.correo===req.query.nombre);
+        //console.log(usuarioRevisar)
+        if(usuarioRevisar){
+            return res.send(usuarioRevisar);
+        }else{
+            return console.log('error')
+        }
+    });
+}
+
 
 export const methods={
     login,
@@ -172,5 +188,6 @@ export const methods={
     revisarCookie,
     getHistorial,
     getAnimal,
-    extrinfoanimales
+    extrinfoanimales,
+    getUsrData
 }
